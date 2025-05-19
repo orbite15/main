@@ -1,0 +1,5269 @@
+{
+	"name": "Bulk Copy from Files to Database",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEachFile",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Files",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Files').output.childItems",
+						"type": "Expression"
+					},
+					"batchCount": 1,
+					"activities": [
+						{
+							"name": "CopyFiles",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "JsonSource",
+									"storeSettings": {
+										"type": "AzureBlobStorageReadSettings",
+										"recursive": true,
+										"wildcardFolderPath": "Ocorrencia",
+										"wildcardFileName": "*.json",
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "JsonReadSettings"
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false,
+									"disableMetricsCollection": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_ocorrencia_sac_value']"
+											},
+											"sink": {
+												"name": "odpv_ocorrencia_sac",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['versionnumber']"
+											},
+											"sink": {
+												"name": "versionnumber",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['severitycode']"
+											},
+											"sink": {
+												"name": "severitycode",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['firstresponseslastatus']"
+											},
+											"sink": {
+												"name": "firstresponseslastatus",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['resolvebyslastatus']"
+											},
+											"sink": {
+												"name": "resolvebyslastatus",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_auto_number_protocolo']"
+											},
+											"sink": {
+												"name": "odpv_auto_number_protocolo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_houve_alteracao_marca']"
+											},
+											"sink": {
+												"name": "odpv_houve_alteracao_marca",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_possui_java_instalado']"
+											},
+											"sink": {
+												"name": "odpv_possui_java_instalado",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_isencao_de_cobranca']"
+											},
+											"sink": {
+												"name": "odpv_isencao_de_cobranca",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_automatico']"
+											},
+											"sink": {
+												"name": "odpv_numero_automatico",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_transferencia_vidas']"
+											},
+											"sink": {
+												"name": "odpv_transferencia_vidas",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['prioritycode']"
+											},
+											"sink": {
+												"name": "prioritycode",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_pagamento_agenciamento']"
+											},
+											"sink": {
+												"name": "odpv_pagamento_agenciamento",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_slaid_value']"
+											},
+											"sink": {
+												"name": "slaid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_documentos_enviados_disponivel']"
+											},
+											"sink": {
+												"name": "odpv_documentos_enviados_disponivel",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['activitiescomplete']"
+											},
+											"sink": {
+												"name": "activitiescomplete",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_slainvokedid_value']"
+											},
+											"sink": {
+												"name": "slainvokedid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_contrato_empresa_assinado']"
+											},
+											"sink": {
+												"name": "odpv_contrato_empresa_assinado",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['caseage']"
+											},
+											"sink": {
+												"name": "caseage",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['timezoneruleversionnumber']"
+											},
+											"sink": {
+												"name": "timezoneruleversionnumber",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_modifiedby_value']"
+											},
+											"sink": {
+												"name": "modifiedby",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_doc_assinado_odontoprev']"
+											},
+											"sink": {
+												"name": "odpv_doc_assinado_odontoprev",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['title']"
+											},
+											"sink": {
+												"name": "title",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_publico']"
+											},
+											"sink": {
+												"name": "odpv_tipo_publico",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_contratoid_value']"
+											},
+											"sink": {
+												"name": "odpv_contratoid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_beneficiario_possui_ficha_aberta']"
+											},
+											"sink": {
+												"name": "odpv_beneficiario_possui_ficha_aberta",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['createdon']"
+											},
+											"sink": {
+												"name": "createdon",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_via_impressa']"
+											},
+											"sink": {
+												"name": "odpv_via_impressa",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['nextsla']"
+											},
+											"sink": {
+												"name": "nextsla",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['merged']"
+											},
+											"sink": {
+												"name": "merged",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_parentcaseid_value']"
+											},
+											"sink": {
+												"name": "parentcaseid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['statecode']"
+											},
+											"sink": {
+												"name": "statecode",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_owningbusinessunit_value']"
+											},
+											"sink": {
+												"name": "owningbusinessunit",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_owninguser_value']"
+											},
+											"sink": {
+												"name": "owninguser",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_telefone_contato']"
+											},
+											"sink": {
+												"name": "odpv_telefone_contato",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_copiado_storage_status']"
+											},
+											"sink": {
+												"name": "odpv_copiado_storage_status",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_motivoid_value']"
+											},
+											"sink": {
+												"name": "odpv_motivo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_alteracao_valor_premio']"
+											},
+											"sink": {
+												"name": "odpv_alteracao_valor_premio",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_ownerid_value']"
+											},
+											"sink": {
+												"name": "ownerid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_fichas_carregadas']"
+											},
+											"sink": {
+												"name": "odpv_fichas_carregadas",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['adx_publishtoweb']"
+											},
+											"sink": {
+												"name": "adx_publishtoweb",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_canal_atendimentoid_value']"
+											},
+											"sink": {
+												"name": "odpv_canal_atendimentoid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['servicestage']"
+											},
+											"sink": {
+												"name": "servicestage",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_reembolso']"
+											},
+											"sink": {
+												"name": "odpv_reembolso",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_uploader']"
+											},
+											"sink": {
+												"name": "odpv_uploader",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_houve_unificacao_contrato']"
+											},
+											"sink": {
+												"name": "odpv_houve_unificacao_contrato",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['isdecrementing']"
+											},
+											"sink": {
+												"name": "isdecrementing",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_categoria_demitidos_aposentados']"
+											},
+											"sink": {
+												"name": "odpv_categoria_demitidos_aposentados",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['customercontacted']"
+											},
+											"sink": {
+												"name": "customercontacted",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_createdby_value']"
+											},
+											"sink": {
+												"name": "createdby",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_encaminhado_aditivo']"
+											},
+											"sink": {
+												"name": "odpv_encaminhado_aditivo",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_email_contato']"
+											},
+											"sink": {
+												"name": "odpv_email_contato",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_sla_expirado']"
+											},
+											"sink": {
+												"name": "odpv_sla_expirado",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_motor_regraid_value']"
+											},
+											"sink": {
+												"name": "odpv_motor_regraid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_formulario_automatico_value']"
+											},
+											"sink": {
+												"name": "odpv_formulario_automatico",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_modifiedonbehalfby_value']"
+											},
+											"sink": {
+												"name": "modifiedonbehalfby",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['routecase']"
+											},
+											"sink": {
+												"name": "routecase",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['isescalated']"
+											},
+											"sink": {
+												"name": "isescalated",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_pode_ocorrer_contato_cliente']"
+											},
+											"sink": {
+												"name": "odpv_pode_ocorrer_contato_cliente",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_reemissao_fatura_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_reemissao_fatura_ocorrencia",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['caseorigincode']"
+											},
+											"sink": {
+												"name": "caseorigincode",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_desbloqueio_todo_grupo']"
+											},
+											"sink": {
+												"name": "odpv_desbloqueio_todo_grupo",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_alteracao_uo_reembolso']"
+											},
+											"sink": {
+												"name": "odpv_alteracao_uo_reembolso",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_necessario_fatura_espelho']"
+											},
+											"sink": {
+												"name": "odpv_necessario_fatura_espelho",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_modelo_relatorio_padrao']"
+											},
+											"sink": {
+												"name": "odpv_modelo_relatorio_padrao",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_documento_assinado_diretoria']"
+											},
+											"sink": {
+												"name": "odpv_documento_assinado_diretoria",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_alteracao_de_plano']"
+											},
+											"sink": {
+												"name": "odpv_alteracao_de_plano",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_prazo_aprovado']"
+											},
+											"sink": {
+												"name": "odpv_prazo_aprovado",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_problema_na_instalacao']"
+											},
+											"sink": {
+												"name": "odpv_problema_na_instalacao",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['followuptaskcreated']"
+											},
+											"sink": {
+												"name": "followuptaskcreated",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_segurar_faturamento']"
+											},
+											"sink": {
+												"name": "odpv_segurar_faturamento",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_pasta_arq_txt_ficha_imagem']"
+											},
+											"sink": {
+												"name": "odpv_pasta_arq_txt_ficha_imagem",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_assuntoid_value']"
+											},
+											"sink": {
+												"name": "odpv_assuntoid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_envio_pela_rotina_contrato']"
+											},
+											"sink": {
+												"name": "odpv_envio_pela_rotina_contrato",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_ordemdepagamento']"
+											},
+											"sink": {
+												"name": "odpv_ordemdepagamento",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_estorno']"
+											},
+											"sink": {
+												"name": "odpv_tipo_estorno",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_pagamento_fatura_indevida']"
+											},
+											"sink": {
+												"name": "odpv_pagamento_fatura_indevida",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_ressarcimento']"
+											},
+											"sink": {
+												"name": "odpv_tipo_ressarcimento",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_ha_exigencia_assinatura']"
+											},
+											"sink": {
+												"name": "odpv_ha_exigencia_assinatura",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['description']"
+											},
+											"sink": {
+												"name": "description",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_resolvebykpiid_value']"
+											},
+											"sink": {
+												"name": "resolvebykpiid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_filtro_cobranca']"
+											},
+											"sink": {
+												"name": "odpv_filtro_cobranca",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_contrato_spg_empresarial']"
+											},
+											"sink": {
+												"name": "odpv_contrato_spg_empresarial",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_houve_inclusao_subestipulante']"
+											},
+											"sink": {
+												"name": "odpv_houve_inclusao_subestipulante",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['resolveby']"
+											},
+											"sink": {
+												"name": "resolveby",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_ocorrencia_criticaid_value']"
+											},
+											"sink": {
+												"name": "odpv_ocorrencia_criticaid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_pular_etapa']"
+											},
+											"sink": {
+												"name": "odpv_pular_etapa",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['casetypecode']"
+											},
+											"sink": {
+												"name": "casetypecode",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_material_marketing_custo']"
+											},
+											"sink": {
+												"name": "odpv_material_marketing_custo",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['firstresponsesent']"
+											},
+											"sink": {
+												"name": "firstresponsesent",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_possui_dotnet_instalado']"
+											},
+											"sink": {
+												"name": "odpv_possui_dotnet_instalado",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['blockedprofile']"
+											},
+											"sink": {
+												"name": "blockedprofile",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_criado_atraves_mashup']"
+											},
+											"sink": {
+												"name": "odpv_criado_atraves_mashup",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['decremententitlementterm']"
+											},
+											"sink": {
+												"name": "decremententitlementterm",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_instrucao_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_instrucao_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['statuscode']"
+											},
+											"sink": {
+												"name": "statuscode",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['incidentstagecode']"
+											},
+											"sink": {
+												"name": "incidentstagecode",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_plano_equivalente_ao_contrato_atual']"
+											},
+											"sink": {
+												"name": "odpv_plano_equivalente_ao_contrato_atual",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_ocorrencia_compartilhada']"
+											},
+											"sink": {
+												"name": "odpv_ocorrencia_compartilhada",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['ticketnumber']"
+											},
+											"sink": {
+												"name": "ticketnumber",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_alteracao_inclusao_novo_plano']"
+											},
+											"sink": {
+												"name": "odpv_alteracao_inclusao_novo_plano",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_bloqueio_desbloqueio']"
+											},
+											"sink": {
+												"name": "odpv_bloqueio_desbloqueio",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_gerar_base_ativo']"
+											},
+											"sink": {
+												"name": "odpv_gerar_base_ativo",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_para_todo_grupo']"
+											},
+											"sink": {
+												"name": "odpv_para_todo_grupo",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['modifiedon']"
+											},
+											"sink": {
+												"name": "modifiedon",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['incidentid']"
+											},
+											"sink": {
+												"name": "incidentid",
+												"type": "Guid"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_desmembramento_contrato']"
+											},
+											"sink": {
+												"name": "odpv_desmembramento_contrato",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['checkemail']"
+											},
+											"sink": {
+												"name": "checkemail",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_customerid_value']"
+											},
+											"sink": {
+												"name": "customerid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_alteracao_prazo_contrato_de']"
+											},
+											"sink": {
+												"name": "odpv_alteracao_prazo_contrato_de",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_cpd_corretora']"
+											},
+											"sink": {
+												"name": "odpv_cpd_corretora",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_vigencia_data_fim_empresa']"
+											},
+											"sink": {
+												"name": "odpv_vigencia_data_fim_empresa",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['adx_createdbyipaddress']"
+											},
+											"sink": {
+												"name": "adx_createdbyipaddress",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_plano_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_plano_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_devolvido_valor']"
+											},
+											"sink": {
+												"name": "odpv_devolvido_valor",
+												"type": "Double"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_de_emissao']"
+											},
+											"sink": {
+												"name": "odpv_tipo_de_emissao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_das_vidas']"
+											},
+											"sink": {
+												"name": "odpv_nome_das_vidas",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_fim_parametro']"
+											},
+											"sink": {
+												"name": "odpv_fim_parametro",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nomecompleto']"
+											},
+											"sink": {
+												"name": "odpv_nomecompleto",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['numberofchildincidents']"
+											},
+											"sink": {
+												"name": "numberofchildincidents",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_especialidade_intencao_cobranca']"
+											},
+											"sink": {
+												"name": "odpv_especialidade_intencao_cobranca",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_proposta']"
+											},
+											"sink": {
+												"name": "odpv_motivo_proposta",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_prorrogacaodetratamentoortodontico']"
+											},
+											"sink": {
+												"name": "odpv_prorrogacaodetratamentoortodontico",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_de_credenciado']"
+											},
+											"sink": {
+												"name": "odpv_tipo_de_credenciado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_ficha_tratamento_manutencao']"
+											},
+											"sink": {
+												"name": "odpv_numero_ficha_tratamento_manutencao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['lastinteraction']"
+											},
+											"sink": {
+												"name": "lastinteraction",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_endereco_portal']"
+											},
+											"sink": {
+												"name": "odpv_endereco_portal",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_solicitacao']"
+											},
+											"sink": {
+												"name": "odpv_data_solicitacao",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_n_da_ocorrencia_de_negociacao']"
+											},
+											"sink": {
+												"name": "odpv_n_da_ocorrencia_de_negociacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_codigo_empresa']"
+											},
+											"sink": {
+												"name": "odpv_codigo_empresa",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_email_duplicado']"
+											},
+											"sink": {
+												"name": "odpv_email_duplicado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_recredenciamento']"
+											},
+											"sink": {
+												"name": "odpv_recredenciamento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_prazo_renovacao']"
+											},
+											"sink": {
+												"name": "odpv_prazo_renovacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_identificacao_empresa_origem']"
+											},
+											"sink": {
+												"name": "odpv_identificacao_empresa_origem",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['contractservicelevelcode']"
+											},
+											"sink": {
+												"name": "contractservicelevelcode",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['importsequencenumber']"
+											},
+											"sink": {
+												"name": "importsequencenumber",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_cancelamento_plano']"
+											},
+											"sink": {
+												"name": "odpv_motivo_cancelamento_plano",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_digito_agencia']"
+											},
+											"sink": {
+												"name": "odpv_digito_agencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_carterinha_dependenteid_value']"
+											},
+											"sink": {
+												"name": "odpv_carterinha_dependenteid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_exclusao_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_data_exclusao_ocorrencia",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_do_certificado']"
+											},
+											"sink": {
+												"name": "odpv_numero_do_certificado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_pagamento_comissao']"
+											},
+											"sink": {
+												"name": "odpv_motivo_pagamento_comissao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_emissao']"
+											},
+											"sink": {
+												"name": "odpv_data_emissao",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_percentual_comissao_antigo']"
+											},
+											"sink": {
+												"name": "odpv_percentual_comissao_antigo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_de_cancelamento']"
+											},
+											"sink": {
+												"name": "odpv_motivo_de_cancelamento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_competencia_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_competencia_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_login_duplicado']"
+											},
+											"sink": {
+												"name": "odpv_login_duplicado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_alteracao_cadastral_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_tipo_alteracao_cadastral_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_arquivo_referente']"
+											},
+											"sink": {
+												"name": "odpv_arquivo_referente",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_bloqueio']"
+											},
+											"sink": {
+												"name": "odpv_data_bloqueio",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_comunicado']"
+											},
+											"sink": {
+												"name": "odpv_motivo_comunicado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_reativacao']"
+											},
+											"sink": {
+												"name": "odpv_motivo_reativacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_alteracao_cadastral_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_alteracao_cadastral_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_valor']"
+											},
+											"sink": {
+												"name": "odpv_valor",
+												"type": "Double"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_vigencia_data_fim_plano']"
+											},
+											"sink": {
+												"name": "odpv_vigencia_data_fim_plano",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_subfatura_origem']"
+											},
+											"sink": {
+												"name": "odpv_subfatura_origem",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_createdbyexternalparty_value']"
+											},
+											"sink": {
+												"name": "createdbyexternalparty",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['adx_stepstoreproduce']"
+											},
+											"sink": {
+												"name": "adx_stepstoreproduce",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_qual_material']"
+											},
+											"sink": {
+												"name": "odpv_qual_material",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['billedserviceunits']"
+											},
+											"sink": {
+												"name": "billedserviceunits",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_da_remocao_da_especialidade']"
+											},
+											"sink": {
+												"name": "odpv_motivo_da_remocao_da_especialidade",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_email_responsavel_movimentacoes']"
+											},
+											"sink": {
+												"name": "odpv_email_responsavel_movimentacoes",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_valor_recibo']"
+											},
+											"sink": {
+												"name": "odpv_valor_recibo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_endereco_envio_completo']"
+											},
+											"sink": {
+												"name": "odpv_endereco_envio_completo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_nascimento']"
+											},
+											"sink": {
+												"name": "odpv_data_nascimento",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_abertura']"
+											},
+											"sink": {
+												"name": "odpv_motivo_abertura",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_de_liberacao']"
+											},
+											"sink": {
+												"name": "odpv_tipo_de_liberacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_do_beneficiario']"
+											},
+											"sink": {
+												"name": "odpv_nome_do_beneficiario",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_acao_bradesco']"
+											},
+											"sink": {
+												"name": "odpv_tipo_acao_bradesco",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_codido_credenciado']"
+											},
+											"sink": {
+												"name": "odpv_codido_credenciado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_formulario_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_numero_formulario_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nova_data_pagamento_fatura']"
+											},
+											"sink": {
+												"name": "odpv_nova_data_pagamento_fatura",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_acao_desejada']"
+											},
+											"sink": {
+												"name": "odpv_tipo_acao_desejada",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_centro_de_custo']"
+											},
+											"sink": {
+												"name": "odpv_centro_de_custo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_processo']"
+											},
+											"sink": {
+												"name": "odpv_numero_processo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_da_autorizacao']"
+											},
+											"sink": {
+												"name": "odpv_motivo_da_autorizacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_telefone_contato_sem_mascara']"
+											},
+											"sink": {
+												"name": "odpv_telefone_contato_sem_mascara",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_necessidade_especifica']"
+											},
+											"sink": {
+												"name": "odpv_necessidade_especifica",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_exemplos_guias_irregularidades']"
+											},
+											"sink": {
+												"name": "odpv_exemplos_guias_irregularidades",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_formulario_reembolso']"
+											},
+											"sink": {
+												"name": "odpv_numero_formulario_reembolso",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_valor_base']"
+											},
+											"sink": {
+												"name": "odpv_valor_base",
+												"type": "Double"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_cro_solicitante']"
+											},
+											"sink": {
+												"name": "odpv_nome_cro_solicitante",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_do_responsavel']"
+											},
+											"sink": {
+												"name": "odpv_nome_do_responsavel",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_procedimento_realizado']"
+											},
+											"sink": {
+												"name": "odpv_procedimento_realizado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_acoes_realizadas_na_empresa']"
+											},
+											"sink": {
+												"name": "odpv_acoes_realizadas_na_empresa",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_marca_atual_contrato']"
+											},
+											"sink": {
+												"name": "odpv_marca_atual_contrato",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_cd']"
+											},
+											"sink": {
+												"name": "odpv_nome_cd",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_de_irregularidade']"
+											},
+											"sink": {
+												"name": "odpv_tipo_de_irregularidade",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_publico_do_cancelamento']"
+											},
+											"sink": {
+												"name": "odpv_publico_do_cancelamento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_endereco_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_numero_endereco_ocorrencia",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_grupo_gerencial']"
+											},
+											"sink": {
+												"name": "odpv_grupo_gerencial",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_movimentacao_data']"
+											},
+											"sink": {
+												"name": "odpv_movimentacao_data",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_informe_rendimento']"
+											},
+											"sink": {
+												"name": "odpv_tipo_informe_rendimento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_da_acao']"
+											},
+											"sink": {
+												"name": "odpv_tipo_da_acao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_primeira_liberacao_senha']"
+											},
+											"sink": {
+												"name": "odpv_data_primeira_liberacao_senha",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_prazo_denuncia']"
+											},
+											"sink": {
+												"name": "odpv_prazo_denuncia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_codigo_carteirinha_atual_value']"
+											},
+											"sink": {
+												"name": "odpv_codigo_carteirinha_atual",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_celula']"
+											},
+											"sink": {
+												"name": "odpv_celula",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_emitir_segunda_via_carteirinha']"
+											},
+											"sink": {
+												"name": "odpv_emitir_segunda_via_carteirinha",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_dados_completos_destinatario']"
+											},
+											"sink": {
+												"name": "odpv_dados_completos_destinatario",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_havera_cancelamento_fatura']"
+											},
+											"sink": {
+												"name": "odpv_havera_cancelamento_fatura",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_classificacao_estrategica']"
+											},
+											"sink": {
+												"name": "odpv_classificacao_estrategica",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_orientacao']"
+											},
+											"sink": {
+												"name": "odpv_motivo_orientacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_dentistaid_value']"
+											},
+											"sink": {
+												"name": "odpv_codigo_dentistaid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_do_objeto']"
+											},
+											"sink": {
+												"name": "odpv_numero_do_objeto",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_vigencia_transferencia']"
+											},
+											"sink": {
+												"name": "odpv_vigencia_transferencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tributos']"
+											},
+											"sink": {
+												"name": "odpv_tributos",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_renovado_ate']"
+											},
+											"sink": {
+												"name": "odpv_renovado_ate",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_alteracao_cadastral_item']"
+											},
+											"sink": {
+												"name": "odpv_alteracao_cadastral_item",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_outros']"
+											},
+											"sink": {
+												"name": "odpv_outros",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_fantasia_de_para']"
+											},
+											"sink": {
+												"name": "odpv_nome_fantasia_de_para",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_conta']"
+											},
+											"sink": {
+												"name": "odpv_tipo_conta",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['emailaddress']"
+											},
+											"sink": {
+												"name": "emailaddress",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_cidade_endereco_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_cidade_endereco_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_descreva_motivo_citado']"
+											},
+											"sink": {
+												"name": "odpv_descreva_motivo_citado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_novo_vencimento']"
+											},
+											"sink": {
+												"name": "odpv_novo_vencimento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_mes_competencia_fatura']"
+											},
+											"sink": {
+												"name": "odpv_mes_competencia_fatura",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tratamento_analisado']"
+											},
+											"sink": {
+												"name": "odpv_tratamento_analisado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_percentual_desconto']"
+											},
+											"sink": {
+												"name": "odpv_percentual_desconto",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_rede_atual']"
+											},
+											"sink": {
+												"name": "odpv_rede_atual",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_de_para_plano']"
+											},
+											"sink": {
+												"name": "odpv_de_para_plano",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_primarycontactid_value']"
+											},
+											"sink": {
+												"name": "primarycontactid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_existingcase_value']"
+											},
+											"sink": {
+												"name": "existingcase",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_reativacao_vidas']"
+											},
+											"sink": {
+												"name": "odpv_motivo_reativacao_vidas",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_verificacao']"
+											},
+											"sink": {
+												"name": "odpv_tipo_verificacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_vigencia_contrato']"
+											},
+											"sink": {
+												"name": "odpv_vigencia_contrato",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_contrato_pme_empresarial']"
+											},
+											"sink": {
+												"name": "odpv_contrato_pme_empresarial",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_rede_nova']"
+											},
+											"sink": {
+												"name": "odpv_rede_nova",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_direcionamento_material']"
+											},
+											"sink": {
+												"name": "odpv_direcionamento_material",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_competencia_parcela']"
+											},
+											"sink": {
+												"name": "odpv_competencia_parcela",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_alteracao_evento_uo']"
+											},
+											"sink": {
+												"name": "odpv_data_alteracao_evento_uo",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_formas_segunda_via_contrato']"
+											},
+											"sink": {
+												"name": "odpv_formas_segunda_via_contrato",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_plano_equivalente_contrato_atual']"
+											},
+											"sink": {
+												"name": "odpv_plano_equivalente_contrato_atual",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_contractdetailid_value']"
+											},
+											"sink": {
+												"name": "contractdetailid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_da_universidade']"
+											},
+											"sink": {
+												"name": "odpv_nome_da_universidade",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_pedido_value']"
+											},
+											"sink": {
+												"name": "odpv_pedido",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_telefone_originador']"
+											},
+											"sink": {
+												"name": "odpv_telefone_originador",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_cod_nova_proposta']"
+											},
+											"sink": {
+												"name": "odpv_cod_nova_proposta",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_primeiro_repasse']"
+											},
+											"sink": {
+												"name": "odpv_data_primeiro_repasse",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_evento']"
+											},
+											"sink": {
+												"name": "odpv_evento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_telefone_pop_up']"
+											},
+											"sink": {
+												"name": "odpv_telefone_pop_up",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_owningteam_value']"
+											},
+											"sink": {
+												"name": "owningteam",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_especificar_documento_aditivo']"
+											},
+											"sink": {
+												"name": "odpv_especificar_documento_aditivo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_dentes_deciduos']"
+											},
+											"sink": {
+												"name": "odpv_dentes_deciduos",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_inicio_parametro']"
+											},
+											"sink": {
+												"name": "odpv_inicio_parametro",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['productserialnumber']"
+											},
+											"sink": {
+												"name": "productserialnumber",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_cnpj_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_cnpj_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_valor_fatura']"
+											},
+											"sink": {
+												"name": "odpv_valor_fatura",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_especialidade_a_ser_removida']"
+											},
+											"sink": {
+												"name": "odpv_especialidade_a_ser_removida",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_novos_planos']"
+											},
+											"sink": {
+												"name": "odpv_novos_planos",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tratamento']"
+											},
+											"sink": {
+												"name": "odpv_tratamento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_vigencia_antes_depois']"
+											},
+											"sink": {
+												"name": "odpv_vigencia_antes_depois",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nova_operadora']"
+											},
+											"sink": {
+												"name": "odpv_nova_operadora",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_informar_irregularidade_demanda']"
+											},
+											"sink": {
+												"name": "odpv_informar_irregularidade_demanda",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_data_fim']"
+											},
+											"sink": {
+												"name": "odpv_motivo_data_fim",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_bloqueio']"
+											},
+											"sink": {
+												"name": "odpv_motivo_bloqueio",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_alterar_plano']"
+											},
+											"sink": {
+												"name": "odpv_alterar_plano",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_fatura_vencimento']"
+											},
+											"sink": {
+												"name": "odpv_fatura_vencimento",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_forma_pagamento']"
+											},
+											"sink": {
+												"name": "odpv_forma_pagamento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_movimentacao']"
+											},
+											"sink": {
+												"name": "odpv_tipo_movimentacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_bairro_endereco_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_bairro_endereco_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_marca_tecnica_slot']"
+											},
+											"sink": {
+												"name": "odpv_marca_tecnica_slot",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_alteracao_para_marca']"
+											},
+											"sink": {
+												"name": "odpv_alteracao_para_marca",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_periodo_estrategico']"
+											},
+											"sink": {
+												"name": "odpv_periodo_estrategico",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_recepcao']"
+											},
+											"sink": {
+												"name": "odpv_data_recepcao",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_atendente']"
+											},
+											"sink": {
+												"name": "odpv_nome_atendente",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_agencia']"
+											},
+											"sink": {
+												"name": "odpv_agencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_suspensao_atendimento']"
+											},
+											"sink": {
+												"name": "odpv_motivo_suspensao_atendimento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_vigencia_da_reativacao']"
+											},
+											"sink": {
+												"name": "odpv_vigencia_da_reativacao",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['traversedpath']"
+											},
+											"sink": {
+												"name": "traversedpath",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_login_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_login_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_solicitacao_rx']"
+											},
+											"sink": {
+												"name": "odpv_motivo_solicitacao_rx",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_valor_juros_a_isentar']"
+											},
+											"sink": {
+												"name": "odpv_valor_juros_a_isentar",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_email_credenciado']"
+											},
+											"sink": {
+												"name": "odpv_email_credenciado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_representante_dentistaid_value']"
+											},
+											"sink": {
+												"name": "odpv_representante_dentistaid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_email_responsavel_recebimento_link_fatura']"
+											},
+											"sink": {
+												"name": "odpv_email_responsavel_recebimento_link_fatura",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_processo']"
+											},
+											"sink": {
+												"name": "odpv_tipo_processo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_codigo']"
+											},
+											"sink": {
+												"name": "odpv_codigo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_formulario']"
+											},
+											"sink": {
+												"name": "odpv_nome_formulario",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_devolucao_valor_pago']"
+											},
+											"sink": {
+												"name": "odpv_motivo_devolucao_valor_pago",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_telefone_dentista']"
+											},
+											"sink": {
+												"name": "odpv_telefone_dentista",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_cep_endereco_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_cep_endereco_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_alteracao_cadastral']"
+											},
+											"sink": {
+												"name": "odpv_tipo_alteracao_cadastral",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_accountid_value']"
+											},
+											"sink": {
+												"name": "accountid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_email_de_contato']"
+											},
+											"sink": {
+												"name": "odpv_email_de_contato",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_ficha_financeira']"
+											},
+											"sink": {
+												"name": "odpv_motivo_ficha_financeira",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_msdyn_iotalert_value']"
+											},
+											"sink": {
+												"name": "msdyn_iotalert",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_alteracao_prazo_contrato_para']"
+											},
+											"sink": {
+												"name": "odpv_alteracao_prazo_contrato_para",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_conta_contabil']"
+											},
+											"sink": {
+												"name": "odpv_conta_contabil",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_email_corretor']"
+											},
+											"sink": {
+												"name": "odpv_email_corretor",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_informar_a_especialidade']"
+											},
+											"sink": {
+												"name": "odpv_informar_a_especialidade",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_area_proprietaria_value']"
+											},
+											"sink": {
+												"name": "odpv_area_proprietaria",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['entityimage_url']"
+											},
+											"sink": {
+												"name": "entityimage_url",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_estorno']"
+											},
+											"sink": {
+												"name": "odpv_motivo_estorno",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_clausula_contratual']"
+											},
+											"sink": {
+												"name": "odpv_clausula_contratual",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_representanteid_value']"
+											},
+											"sink": {
+												"name": "odpv_representanteid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_renovacao_contrato']"
+											},
+											"sink": {
+												"name": "odpv_renovacao_contrato",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_valor_a_ser_devolvido']"
+											},
+											"sink": {
+												"name": "odpv_valor_a_ser_devolvido",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_evento_valorizado_repassado_gto']"
+											},
+											"sink": {
+												"name": "odpv_evento_valorizado_repassado_gto",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_fantasia']"
+											},
+											"sink": {
+												"name": "odpv_nome_fantasia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_codigo_transferencia']"
+											},
+											"sink": {
+												"name": "odpv_codigo_transferencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_exclusao']"
+											},
+											"sink": {
+												"name": "odpv_motivo_exclusao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_dentista']"
+											},
+											"sink": {
+												"name": "odpv_nome_dentista",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['escalatedon']"
+											},
+											"sink": {
+												"name": "escalatedon",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_do_banco']"
+											},
+											"sink": {
+												"name": "odpv_numero_do_banco",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_vigencia']"
+											},
+											"sink": {
+												"name": "odpv_data_vigencia",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_retirada_de_carencia']"
+											},
+											"sink": {
+												"name": "odpv_motivo_retirada_de_carencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_estado_endereco_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_estado_endereco_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_da_alteracao']"
+											},
+											"sink": {
+												"name": "odpv_tipo_da_alteracao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_vigencia_reajuste']"
+											},
+											"sink": {
+												"name": "odpv_vigencia_reajuste",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_protocolo_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_numero_protocolo_ocorrencia",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_masterid_value']"
+											},
+											"sink": {
+												"name": "masterid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['lastonholdtime']"
+											},
+											"sink": {
+												"name": "lastonholdtime",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_plano']"
+											},
+											"sink": {
+												"name": "odpv_numero_plano",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipodeacao']"
+											},
+											"sink": {
+												"name": "odpv_tipodeacao"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_resumo_obrigacao']"
+											},
+											"sink": {
+												"name": "odpv_resumo_obrigacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_acao_retroativa_referente']"
+											},
+											"sink": {
+												"name": "odpv_acao_retroativa_referente",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['deactivatedon']"
+											},
+											"sink": {
+												"name": "deactivatedon",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_beneficiario_value']"
+											},
+											"sink": {
+												"name": "odpv_beneficiario",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_cobranca_ou_devolucao_competencia']"
+											},
+											"sink": {
+												"name": "odpv_cobranca_ou_devolucao_competencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_protocolo_do_atendimento']"
+											},
+											"sink": {
+												"name": "odpv_protocolo_do_atendimento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_banco']"
+											},
+											"sink": {
+												"name": "odpv_banco",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_corretora_a_ser_nomeada']"
+											},
+											"sink": {
+												"name": "odpv_corretora_a_ser_nomeada",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_dia_retorno_do_contato']"
+											},
+											"sink": {
+												"name": "odpv_dia_retorno_do_contato",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_canal_venda']"
+											},
+											"sink": {
+												"name": "odpv_canal_venda",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['messagetypecode']"
+											},
+											"sink": {
+												"name": "messagetypecode",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_inativacao']"
+											},
+											"sink": {
+												"name": "odpv_data_inativacao",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_marca_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_marca_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_codigo_dentista_novo_value']"
+											},
+											"sink": {
+												"name": "odpv_codigo_dentista_novo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_do_pedido']"
+											},
+											"sink": {
+												"name": "odpv_tipo_do_pedido",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_do_parecer']"
+											},
+											"sink": {
+												"name": "odpv_motivo_do_parecer",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_de_acao']"
+											},
+											"sink": {
+												"name": "odpv_tipo_de_acao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_especialidade_etapa_gto']"
+											},
+											"sink": {
+												"name": "odpv_especialidade_etapa_gto",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivodaglosa']"
+											},
+											"sink": {
+												"name": "odpv_motivodaglosa",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['adx_modifiedbyusername']"
+											},
+											"sink": {
+												"name": "adx_modifiedbyusername",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipos_de_tributos']"
+											},
+											"sink": {
+												"name": "odpv_tipos_de_tributos",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_periodo']"
+											},
+											"sink": {
+												"name": "odpv_periodo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_vigencia_atual']"
+											},
+											"sink": {
+												"name": "odpv_vigencia_atual",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_troca']"
+											},
+											"sink": {
+												"name": "odpv_motivo_troca",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_periodo_tratamento']"
+											},
+											"sink": {
+												"name": "odpv_periodo_tratamento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_qtde_vidas']"
+											},
+											"sink": {
+												"name": "odpv_qtde_vidas",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_continuidade_tratamento']"
+											},
+											"sink": {
+												"name": "odpv_data_continuidade_tratamento",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_quantidade_pontos']"
+											},
+											"sink": {
+												"name": "odpv_quantidade_pontos",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_plano']"
+											},
+											"sink": {
+												"name": "odpv_nome_plano",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_aplicativo_do_credenciado_value']"
+											},
+											"sink": {
+												"name": "odpv_aplicativo_do_credenciado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_solicitacao']"
+											},
+											"sink": {
+												"name": "odpv_tipo_solicitacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_origem_archive']"
+											},
+											"sink": {
+												"name": "odpv_origem_archive",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_telefone_origem']"
+											},
+											"sink": {
+												"name": "odpv_telefone_origem",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_protocolo_chatbot']"
+											},
+											"sink": {
+												"name": "odpv_protocolo_chatbot",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_geral_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_data_geral_ocorrencia",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_fim_extrato']"
+											},
+											"sink": {
+												"name": "odpv_data_fim_extrato",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_marca_dropdown']"
+											},
+											"sink": {
+												"name": "odpv_marca_dropdown",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_horario_atendimento']"
+											},
+											"sink": {
+												"name": "odpv_horario_atendimento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_meio_contato_preferencial']"
+											},
+											"sink": {
+												"name": "odpv_meio_contato_preferencial",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_solicitadopor']"
+											},
+											"sink": {
+												"name": "odpv_solicitadopor",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_proposta']"
+											},
+											"sink": {
+												"name": "odpv_numero_proposta",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_cadastro_de_especialidade']"
+											},
+											"sink": {
+												"name": "odpv_cadastro_de_especialidade",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_observacao_plano']"
+											},
+											"sink": {
+												"name": "odpv_observacao_plano",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_especialidade_evento_negado']"
+											},
+											"sink": {
+												"name": "odpv_especialidade_evento_negado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_boas_vindas']"
+											},
+											"sink": {
+												"name": "odpv_motivo_boas_vindas",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_informacoes_credenciado']"
+											},
+											"sink": {
+												"name": "odpv_informacoes_credenciado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_inicio_extrato']"
+											},
+											"sink": {
+												"name": "odpv_data_inicio_extrato",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_procedimento']"
+											},
+											"sink": {
+												"name": "odpv_tipo_procedimento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['utcconversiontimezonecode']"
+											},
+											"sink": {
+												"name": "utcconversiontimezonecode",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_operadora_concorrente']"
+											},
+											"sink": {
+												"name": "odpv_operadora_concorrente",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_valor_ocorrencia_txt']"
+											},
+											"sink": {
+												"name": "odpv_valor_ocorrencia_txt",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_beneficiario_nao_cadastrado']"
+											},
+											"sink": {
+												"name": "odpv_beneficiario_nao_cadastrado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['stageid']"
+											},
+											"sink": {
+												"name": "stageid",
+												"type": "Guid"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_fatura_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_numero_fatura_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_materiais_qual_marca']"
+											},
+											"sink": {
+												"name": "odpv_materiais_qual_marca"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_msa_partnercontactid_value']"
+											},
+											"sink": {
+												"name": "msa_partnercontactid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_agencia_bradesco']"
+											},
+											"sink": {
+												"name": "odpv_numero_agencia_bradesco",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_estorno_via']"
+											},
+											"sink": {
+												"name": "odpv_estorno_via",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_subfatura']"
+											},
+											"sink": {
+												"name": "odpv_subfatura",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_cancelamento_contrato']"
+											},
+											"sink": {
+												"name": "odpv_motivo_cancelamento_contrato",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_kbarticleid_value']"
+											},
+											"sink": {
+												"name": "kbarticleid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_inicio_tratamento']"
+											},
+											"sink": {
+												"name": "odpv_data_inicio_tratamento",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_contrato_subfatura_origem']"
+											},
+											"sink": {
+												"name": "odpv_contrato_subfatura_origem",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_tratamento']"
+											},
+											"sink": {
+												"name": "odpv_data_tratamento",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['entityimage_timestamp']"
+											},
+											"sink": {
+												"name": "entityimage_timestamp",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_vigencia_reativacao_contrato']"
+											},
+											"sink": {
+												"name": "odpv_vigencia_reativacao_contrato",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_debito']"
+											},
+											"sink": {
+												"name": "odpv_data_debito",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_disque']"
+											},
+											"sink": {
+												"name": "odpv_motivo_disque",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numeros_das_gtos']"
+											},
+											"sink": {
+												"name": "odpv_numeros_das_gtos",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_parceiroid_value']"
+											},
+											"sink": {
+												"name": "odpv_parceiroid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_oque_foienviado_equivocadamente']"
+											},
+											"sink": {
+												"name": "odpv_oque_foienviado_equivocadamente",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_do_desconto']"
+											},
+											"sink": {
+												"name": "odpv_motivo_do_desconto",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_descredenciamento']"
+											},
+											"sink": {
+												"name": "odpv_motivo_descredenciamento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_meio_de_envio']"
+											},
+											"sink": {
+												"name": "odpv_meio_de_envio",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_situacao_caixa']"
+											},
+											"sink": {
+												"name": "odpv_situacao_caixa",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_carteirinha_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_carteirinha_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_glosa_protese']"
+											},
+											"sink": {
+												"name": "odpv_motivo_glosa_protese",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_novo_vegencia']"
+											},
+											"sink": {
+												"name": "odpv_novo_vegencia",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_especialidades']"
+											},
+											"sink": {
+												"name": "odpv_especialidades"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_uo_nova']"
+											},
+											"sink": {
+												"name": "odpv_uo_nova",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_codigos_remocao_especialidades']"
+											},
+											"sink": {
+												"name": "odpv_codigos_remocao_especialidades",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_responsavel_duplicado']"
+											},
+											"sink": {
+												"name": "odpv_responsavel_duplicado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_login_empresa_distribuidora']"
+											},
+											"sink": {
+												"name": "odpv_login_empresa_distribuidora",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_prorrogacao_2via']"
+											},
+											"sink": {
+												"name": "odpv_motivo_prorrogacao_2via",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_das_carteirinhas']"
+											},
+											"sink": {
+												"name": "odpv_numero_das_carteirinhas",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_sigla_plano']"
+											},
+											"sink": {
+												"name": "odpv_sigla_plano",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_razao_social']"
+											},
+											"sink": {
+												"name": "odpv_razao_social",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_sinistralidade']"
+											},
+											"sink": {
+												"name": "odpv_sinistralidade",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_negociacao']"
+											},
+											"sink": {
+												"name": "odpv_motivo_negociacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_codigo_tuss_e_dente_regiao']"
+											},
+											"sink": {
+												"name": "odpv_codigo_tuss_e_dente_regiao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_competencia']"
+											},
+											"sink": {
+												"name": "odpv_competencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_cpf']"
+											},
+											"sink": {
+												"name": "odpv_cpf",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_uo_atual']"
+											},
+											"sink": {
+												"name": "odpv_uo_atual",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_argumento_usado_pelo_dentista']"
+											},
+											"sink": {
+												"name": "odpv_argumento_usado_pelo_dentista",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_da_proposta']"
+											},
+											"sink": {
+												"name": "odpv_numero_da_proposta",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_email_para_envio_do_documento']"
+											},
+											"sink": {
+												"name": "odpv_email_para_envio_do_documento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['processid']"
+											},
+											"sink": {
+												"name": "processid",
+												"type": "Guid"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_de_relatorio']"
+											},
+											"sink": {
+												"name": "odpv_tipo_de_relatorio",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_cancelamento_contrato']"
+											},
+											"sink": {
+												"name": "odpv_data_cancelamento_contrato",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_num_oc_autorizacao__repasse']"
+											},
+											"sink": {
+												"name": "odpv_num_oc_autorizacao__repasse",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_empresaid_value']"
+											},
+											"sink": {
+												"name": "odpv_empresaid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_vigencia_data']"
+											},
+											"sink": {
+												"name": "odpv_vigencia_data",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_minuta_demandas_juridicas']"
+											},
+											"sink": {
+												"name": "odpv_tipo_minuta_demandas_juridicas",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_contato_responsavel_pedido_txt']"
+											},
+											"sink": {
+												"name": "odpv_contato_responsavel_pedido_txt",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_resumo_decisao']"
+											},
+											"sink": {
+												"name": "odpv_resumo_decisao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_alterada']"
+											},
+											"sink": {
+												"name": "odpv_data_alterada",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_do_manual']"
+											},
+											"sink": {
+												"name": "odpv_tipo_do_manual",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_processo_juridico']"
+											},
+											"sink": {
+												"name": "odpv_tipo_processo_juridico",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_vencimento_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_data_vencimento_ocorrencia",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_justificativa_do_cd_troca']"
+											},
+											"sink": {
+												"name": "odpv_justificativa_do_cd_troca",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_da_movimentacao']"
+											},
+											"sink": {
+												"name": "odpv_data_da_movimentacao",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['onholdtime']"
+											},
+											"sink": {
+												"name": "onholdtime",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['responseby']"
+											},
+											"sink": {
+												"name": "responseby",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_msa_partnerid_value']"
+											},
+											"sink": {
+												"name": "msa_partnerid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_negativa_atendimento']"
+											},
+											"sink": {
+												"name": "odpv_data_negativa_atendimento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_competencia_fatura']"
+											},
+											"sink": {
+												"name": "odpv_competencia_fatura",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['entityimageid']"
+											},
+											"sink": {
+												"name": "entityimageid",
+												"type": "Guid"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['overriddencreatedon']"
+											},
+											"sink": {
+												"name": "overriddencreatedon",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_ficha']"
+											},
+											"sink": {
+												"name": "odpv_numero_ficha",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_logradouro_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_logradouro_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_gto_codigo_tuss']"
+											},
+											"sink": {
+												"name": "odpv_gto_codigo_tuss",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_fim_plano']"
+											},
+											"sink": {
+												"name": "odpv_data_fim_plano",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_qtde_minutas']"
+											},
+											"sink": {
+												"name": "odpv_qtde_minutas",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_ativacao']"
+											},
+											"sink": {
+												"name": "odpv_motivo_ativacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_identificacao_empresa_destino']"
+											},
+											"sink": {
+												"name": "odpv_identificacao_empresa_destino",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_visita']"
+											},
+											"sink": {
+												"name": "odpv_data_visita",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_descricao_da_irregularidade']"
+											},
+											"sink": {
+												"name": "odpv_descricao_da_irregularidade",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_credenciado_potencialid_value']"
+											},
+											"sink": {
+												"name": "odpv_credenciado_potencialid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tera_estorno']"
+											},
+											"sink": {
+												"name": "odpv_tera_estorno",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_fichas_senha_liberada']"
+											},
+											"sink": {
+												"name": "odpv_fichas_senha_liberada",
+												"type": "Boolean"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_contactid_value']"
+											},
+											"sink": {
+												"name": "contactid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_fim_subfatura']"
+											},
+											"sink": {
+												"name": "odpv_data_fim_subfatura",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_carteirinhaid_value']"
+											},
+											"sink": {
+												"name": "odpv_carteirinhaid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_acoes_rede']"
+											},
+											"sink": {
+												"name": "odpv_motivo_acoes_rede",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_qtde_impressao']"
+											},
+											"sink": {
+												"name": "odpv_qtde_impressao",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_bairro_rede']"
+											},
+											"sink": {
+												"name": "odpv_bairro_rede",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['adx_createdbyusername']"
+											},
+											"sink": {
+												"name": "adx_createdbyusername",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_do_erro']"
+											},
+											"sink": {
+												"name": "odpv_data_do_erro",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_ano_reajuste']"
+											},
+											"sink": {
+												"name": "odpv_ano_reajuste",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_percentual_agenciamento']"
+											},
+											"sink": {
+												"name": "odpv_percentual_agenciamento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_fatura_pendente']"
+											},
+											"sink": {
+												"name": "odpv_fatura_pendente",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_endereco_completo']"
+											},
+											"sink": {
+												"name": "odpv_endereco_completo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_da_formatura']"
+											},
+											"sink": {
+												"name": "odpv_data_da_formatura",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_contractid_value']"
+											},
+											"sink": {
+												"name": "contractid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_prevista_acao']"
+											},
+											"sink": {
+												"name": "odpv_data_prevista_acao",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_hora_consulta']"
+											},
+											"sink": {
+												"name": "odpv_data_hora_consulta",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_empresa']"
+											},
+											"sink": {
+												"name": "odpv_nome_empresa",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_responsavel_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_responsavel_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_percentual_comissao_novo']"
+											},
+											"sink": {
+												"name": "odpv_percentual_comissao_novo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['customersatisfactioncode']"
+											},
+											"sink": {
+												"name": "customersatisfactioncode",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_problema_tecnico']"
+											},
+											"sink": {
+												"name": "odpv_problema_tecnico",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_firstresponsebykpiid_value']"
+											},
+											"sink": {
+												"name": "firstresponsebykpiid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_auto_number']"
+											},
+											"sink": {
+												"name": "odpv_auto_number",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_responsavel_contrato']"
+											},
+											"sink": {
+												"name": "odpv_nome_responsavel_contrato",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_dentista_realizou_procedimento']"
+											},
+											"sink": {
+												"name": "odpv_dentista_realizou_procedimento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_ultima_fatura_a_ser_emitida']"
+											},
+											"sink": {
+												"name": "odpv_ultima_fatura_a_ser_emitida",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_ocorrencia_procedente']"
+											},
+											"sink": {
+												"name": "odpv_ocorrencia_procedente",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_cancelamento_motivo']"
+											},
+											"sink": {
+												"name": "odpv_cancelamento_motivo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_do_registro']"
+											},
+											"sink": {
+												"name": "odpv_motivo_do_registro",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_digito_conta']"
+											},
+											"sink": {
+												"name": "odpv_digito_conta",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_cadastro']"
+											},
+											"sink": {
+												"name": "odpv_tipo_cadastro",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_deliberacao']"
+											},
+											"sink": {
+												"name": "odpv_tipo_deliberacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_demanda']"
+											},
+											"sink": {
+												"name": "odpv_tipo_demanda",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_criacao_usuarios']"
+											},
+											"sink": {
+												"name": "odpv_criacao_usuarios",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_obrigacao']"
+											},
+											"sink": {
+												"name": "odpv_tipo_obrigacao"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nomedoresponsaveldaconta']"
+											},
+											"sink": {
+												"name": "odpv_nomedoresponsaveldaconta",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_endereco_completo_empresa_responsavel']"
+											},
+											"sink": {
+												"name": "odpv_endereco_completo_empresa_responsavel",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_cod_proposta_paga']"
+											},
+											"sink": {
+												"name": "odpv_cod_proposta_paga",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_navegador_utilizado']"
+											},
+											"sink": {
+												"name": "odpv_navegador_utilizado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_credenciado']"
+											},
+											"sink": {
+												"name": "odpv_nome_credenciado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['exchangerate']"
+											},
+											"sink": {
+												"name": "exchangerate",
+												"type": "Double"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_entitlementid_value']"
+											},
+											"sink": {
+												"name": "entitlementid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_valor_plano']"
+											},
+											"sink": {
+												"name": "odpv_valor_plano",
+												"type": "Double"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_credenciamento']"
+											},
+											"sink": {
+												"name": "odpv_data_credenciamento",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_qtd_dias_solicitacao_preaprovacao']"
+											},
+											"sink": {
+												"name": "odpv_qtd_dias_solicitacao_preaprovacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_inativacao']"
+											},
+											"sink": {
+												"name": "odpv_motivo_inativacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_recibo']"
+											},
+											"sink": {
+												"name": "odpv_data_recibo",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_deliberacao_descredenciamento']"
+											},
+											"sink": {
+												"name": "odpv_data_deliberacao_descredenciamento",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_emissao_fatura_competencia']"
+											},
+											"sink": {
+												"name": "odpv_emissao_fatura_competencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_subjectid_value']"
+											},
+											"sink": {
+												"name": "subjectid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_meio_envio_bradesco']"
+											},
+											"sink": {
+												"name": "odpv_meio_envio_bradesco",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_cancelamento']"
+											},
+											"sink": {
+												"name": "odpv_motivo_cancelamento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_motivo_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_envio']"
+											},
+											"sink": {
+												"name": "odpv_data_envio",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_de_envio']"
+											},
+											"sink": {
+												"name": "odpv_tipo_de_envio",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_codigo_cd']"
+											},
+											"sink": {
+												"name": "odpv_codigo_cd",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_relatorio_book_comite']"
+											},
+											"sink": {
+												"name": "odpv_tipo_relatorio_book_comite",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_createdonbehalfby_value']"
+											},
+											"sink": {
+												"name": "createdonbehalfby",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['cr0ee_teste_20201612']"
+											},
+											"sink": {
+												"name": "cr0ee_teste_20201612",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_conta']"
+											},
+											"sink": {
+												"name": "odpv_conta",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_apolice']"
+											},
+											"sink": {
+												"name": "odpv_numero_apolice",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_cidade_mais_proxima']"
+											},
+											"sink": {
+												"name": "odpv_cidade_mais_proxima",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_ocorrencia_descredenciamento']"
+											},
+											"sink": {
+												"name": "odpv_numero_ocorrencia_descredenciamento",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_dentista_alvo_solicitacaoid_value']"
+											},
+											"sink": {
+												"name": "odpv_dentista_alvo_solicitacaoid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_vigencia_incexc_realizada']"
+											},
+											"sink": {
+												"name": "odpv_vigencia_incexc_realizada",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_estorno_protocolo']"
+											},
+											"sink": {
+												"name": "odpv_motivo_estorno_protocolo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_complemento_endereco_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_complemento_endereco_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_beneficiario']"
+											},
+											"sink": {
+												"name": "odpv_numero_beneficiario",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_email_secundario']"
+											},
+											"sink": {
+												"name": "odpv_email_secundario",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['adx_modifiedbyipaddress']"
+											},
+											"sink": {
+												"name": "adx_modifiedbyipaddress",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_codigo_devolucao_mesmo_cnpj']"
+											},
+											"sink": {
+												"name": "odpv_codigo_devolucao_mesmo_cnpj",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_numero_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_numero_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_acao']"
+											},
+											"sink": {
+												"name": "odpv_nome_acao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_cobranca_multa']"
+											},
+											"sink": {
+												"name": "odpv_cobranca_multa",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_qtde_de_blocos']"
+											},
+											"sink": {
+												"name": "odpv_qtde_de_blocos",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_publico_dental']"
+											},
+											"sink": {
+												"name": "odpv_publico_dental",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['followupby']"
+											},
+											"sink": {
+												"name": "followupby",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_modifiedbyexternalparty_value']"
+											},
+											"sink": {
+												"name": "modifiedbyexternalparty",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_periodo_filtro']"
+											},
+											"sink": {
+												"name": "odpv_periodo_filtro",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['adx_resolution']"
+											},
+											"sink": {
+												"name": "adx_resolution",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_material']"
+											},
+											"sink": {
+												"name": "odpv_tipo_material",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_competencias_aberto']"
+											},
+											"sink": {
+												"name": "odpv_competencias_aberto",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_alteracao_indice_utilizado']"
+											},
+											"sink": {
+												"name": "odpv_alteracao_indice_utilizado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_minuta']"
+											},
+											"sink": {
+												"name": "odpv_tipo_minuta",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_classificacao_procedimento']"
+											},
+											"sink": {
+												"name": "odpv_classificacao_procedimento"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_pedido_motivo']"
+											},
+											"sink": {
+												"name": "odpv_pedido_motivo",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_socialprofileid_value']"
+											},
+											"sink": {
+												"name": "socialprofileid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_orientacao']"
+											},
+											"sink": {
+												"name": "odpv_tipo_orientacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_alteracao_dados_pessoais']"
+											},
+											"sink": {
+												"name": "odpv_alteracao_dados_pessoais"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_ocorrencia_anterior']"
+											},
+											"sink": {
+												"name": "odpv_ocorrencia_anterior",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['influencescore']"
+											},
+											"sink": {
+												"name": "influencescore",
+												"type": "Double"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_como_foi_enviado']"
+											},
+											"sink": {
+												"name": "odpv_como_foi_enviado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_contato_empresaid_value']"
+											},
+											"sink": {
+												"name": "odpv_contato_empresaid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_codigo_a_transferir']"
+											},
+											"sink": {
+												"name": "odpv_codigo_a_transferir",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_nome_fantasia_ocorrencia']"
+											},
+											"sink": {
+												"name": "odpv_nome_fantasia_ocorrencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_dente']"
+											},
+											"sink": {
+												"name": "odpv_tipo_dente",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_ano_base']"
+											},
+											"sink": {
+												"name": "odpv_ano_base",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['actualserviceunits']"
+											},
+											"sink": {
+												"name": "actualserviceunits",
+												"type": "Int32"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_atendimento']"
+											},
+											"sink": {
+												"name": "odpv_data_atendimento",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_corretoraid_value']"
+											},
+											"sink": {
+												"name": "odpv_corretoraid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_transactioncurrencyid_value']"
+											},
+											"sink": {
+												"name": "transactioncurrencyid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_productid_value']"
+											},
+											"sink": {
+												"name": "productid",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['adx_resolutiondate']"
+											},
+											"sink": {
+												"name": "adx_resolutiondate",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tratamento_nao_reconhecido']"
+											},
+											"sink": {
+												"name": "odpv_tratamento_nao_reconhecido",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_minuta_bradesco']"
+											},
+											"sink": {
+												"name": "odpv_tipo_minuta_bradesco",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_novo_cnpj']"
+											},
+											"sink": {
+												"name": "odpv_novo_cnpj",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_uo_cd']"
+											},
+											"sink": {
+												"name": "odpv_uo_cd",
+												"type": "Double"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_subfatura_destino']"
+											},
+											"sink": {
+												"name": "odpv_subfatura_destino",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_preferencia_agendamento']"
+											},
+											"sink": {
+												"name": "odpv_preferencia_agendamento",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_da_devolucao']"
+											},
+											"sink": {
+												"name": "odpv_motivo_da_devolucao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_telefone_informado']"
+											},
+											"sink": {
+												"name": "odpv_telefone_informado",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_acao_inclusao_exclusao']"
+											},
+											"sink": {
+												"name": "odpv_acao_inclusao_exclusao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_telefone_de_contato']"
+											},
+											"sink": {
+												"name": "odpv_telefone_de_contato",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_retirada_carencia']"
+											},
+											"sink": {
+												"name": "odpv_motivo_retirada_carencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_fatura_a_ser_cancelada']"
+											},
+											"sink": {
+												"name": "odpv_fatura_a_ser_cancelada",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_banco_disque']"
+											},
+											"sink": {
+												"name": "odpv_banco_disque",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_protocolo_origem']"
+											},
+											"sink": {
+												"name": "odpv_protocolo_origem",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_manutencoessemfichainicioautorizada']"
+											},
+											"sink": {
+												"name": "odpv_manutencoessemfichainicioautorizada"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_unidade']"
+											},
+											"sink": {
+												"name": "odpv_unidade",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_descricao_tratamento']"
+											},
+											"sink": {
+												"name": "odpv_descricao_tratamento",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_data_inativacao_vida']"
+											},
+											"sink": {
+												"name": "odpv_data_inativacao_vida",
+												"type": "DateTime"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_contrato']"
+											},
+											"sink": {
+												"name": "odpv_contrato",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_solicitacao']"
+											},
+											"sink": {
+												"name": "odpv_motivo_solicitacao",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_regional']"
+											},
+											"sink": {
+												"name": "odpv_regional",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_tipo_tratamento_especialidade_necessario']"
+											},
+											"sink": {
+												"name": "odpv_tipo_tratamento_especialidade_necessario",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['sentimentvalue']"
+											},
+											"sink": {
+												"name": "sentimentvalue",
+												"type": "Double"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['odpv_motivo_urgencia']"
+											},
+											"sink": {
+												"name": "odpv_motivo_urgencia",
+												"type": "String"
+											}
+										},
+										{
+											"source": {
+												"path": "$['value'][0]['_odpv_codigo_dentista_atual_value']"
+											},
+											"sink": {
+												"name": "odpv_codigo_dentista_atual",
+												"type": "String"
+											}
+										}
+									],
+									"collectionReference": "",
+									"mapComplexValuesToString": true
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "JsonOcorrencia",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "AzureSqlDatabaseSinkDataset",
+									"type": "DatasetReference",
+									"parameters": {
+										"sinkTableName": "incident"
+									}
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "Get Files",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "JsonOcorrencia",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "JsonReadSettings"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-01-25T00:06:54Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "DestinationDataset_t5v",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "reclamacoes"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,42 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DataverseEntity2",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlDatabaseSinkDataset",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     query: '<fetch>\\n  <entity name=\"incident\" >\\n    <filter type=\"or\" >\\n      <condition attribute=\"incidentid\" operator=\"eq\" value=\"00c4121b-d614-ec11-b6e7-000d3a885a54\" />\\n      <condition attribute=\"parentcaseid\" operator=\"eq\" value=\"00c4121b-d614-ec11-b6e7-000d3a885a54\" uiname=\"20210913013402\" uitype=\"incident\" />\\n    </filter>\\n  </entity>\\n</fetch>') ~> source1",
+				"source1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+			]
+		}
+	}
+}

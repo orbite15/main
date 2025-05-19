@@ -1,0 +1,1769 @@
+{
+	"name": "JsonOcorrencia",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "Ocorrencia",
+				"container": "archive"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"@@odata.context": {
+					"type": "string"
+				},
+				"value": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"@odata.etag": {
+								"type": "string"
+							},
+							"odpv_tipo_estorno": {
+								"type": "boolean"
+							},
+							"versionnumber": {
+								"type": "integer"
+							},
+							"severitycode": {
+								"type": "integer"
+							},
+							"firstresponseslastatus": {
+								"type": "integer"
+							},
+							"odpv_houve_alteracao_marca": {
+								"type": "boolean"
+							},
+							"odpv_possui_java_instalado": {
+								"type": "boolean"
+							},
+							"odpv_isencao_de_cobranca": {
+								"type": "boolean"
+							},
+							"odpv_numero_automatico": {
+								"type": "string"
+							},
+							"processid": {
+								"type": "string"
+							},
+							"odpv_transferencia_vidas": {
+								"type": "boolean"
+							},
+							"prioritycode": {
+								"type": "integer"
+							},
+							"odpv_pagamento_agenciamento": {
+								"type": "boolean"
+							},
+							"_slaid_value": {
+								"type": "string"
+							},
+							"odpv_documentos_enviados_disponivel": {
+								"type": "boolean"
+							},
+							"_slainvokedid_value": {
+								"type": "string"
+							},
+							"odpv_contrato_empresa_assinado": {
+								"type": "boolean"
+							},
+							"caseage": {
+								"type": "string"
+							},
+							"_modifiedby_value": {
+								"type": "string"
+							},
+							"title": {
+								"type": "string"
+							},
+							"odpv_tipo_publico": {
+								"type": "integer"
+							},
+							"numberofchildincidents": {
+								"type": "integer"
+							},
+							"odpv_beneficiario_possui_ficha_aberta": {
+								"type": "boolean"
+							},
+							"createdon": {
+								"type": "string"
+							},
+							"odpv_via_impressa": {
+								"type": "boolean"
+							},
+							"activitiescomplete": {
+								"type": "boolean"
+							},
+							"statecode": {
+								"type": "integer"
+							},
+							"_owningbusinessunit_value": {
+								"type": "string"
+							},
+							"_owninguser_value": {
+								"type": "string"
+							},
+							"odpv_copiado_storage_status": {
+								"type": "integer"
+							},
+							"odpv_alteracao_valor_premio": {
+								"type": "boolean"
+							},
+							"_ownerid_value": {
+								"type": "string"
+							},
+							"odpv_fichas_carregadas": {
+								"type": "boolean"
+							},
+							"adx_publishtoweb": {
+								"type": "boolean"
+							},
+							"_odpv_canal_atendimentoid_value": {
+								"type": "string"
+							},
+							"servicestage": {
+								"type": "integer"
+							},
+							"odpv_reembolso": {
+								"type": "boolean"
+							},
+							"odpv_uploader": {
+								"type": "boolean"
+							},
+							"odpv_houve_unificacao_contrato": {
+								"type": "boolean"
+							},
+							"isdecrementing": {
+								"type": "boolean"
+							},
+							"odpv_categoria_demitidos_aposentados": {
+								"type": "boolean"
+							},
+							"odpv_desmembramento_contrato": {
+								"type": "boolean"
+							},
+							"_createdby_value": {
+								"type": "string"
+							},
+							"odpv_encaminhado_aditivo": {
+								"type": "boolean"
+							},
+							"odpv_alteracao_uo_reembolso": {
+								"type": "boolean"
+							},
+							"odpv_sla_expirado": {
+								"type": "boolean"
+							},
+							"_odpv_codigo_dentistaid_value": {
+								"type": "string"
+							},
+							"isescalated": {
+								"type": "boolean"
+							},
+							"routecase": {
+								"type": "boolean"
+							},
+							"odpv_pode_ocorrer_contato_cliente": {
+								"type": "boolean"
+							},
+							"odpv_reemissao_fatura_ocorrencia": {
+								"type": "boolean"
+							},
+							"caseorigincode": {
+								"type": "integer"
+							},
+							"odpv_desbloqueio_todo_grupo": {
+								"type": "boolean"
+							},
+							"odpv_necessario_fatura_espelho": {
+								"type": "boolean"
+							},
+							"odpv_documento_assinado_diretoria": {
+								"type": "boolean"
+							},
+							"odpv_alteracao_de_plano": {
+								"type": "boolean"
+							},
+							"odpv_prazo_aprovado": {
+								"type": "boolean"
+							},
+							"odpv_problema_na_instalacao": {
+								"type": "boolean"
+							},
+							"followuptaskcreated": {
+								"type": "boolean"
+							},
+							"odpv_segurar_faturamento": {
+								"type": "boolean"
+							},
+							"odpv_pasta_arq_txt_ficha_imagem": {
+								"type": "boolean"
+							},
+							"odpv_doc_assinado_odontoprev": {
+								"type": "boolean"
+							},
+							"customercontacted": {
+								"type": "boolean"
+							},
+							"odpv_envio_pela_rotina_contrato": {
+								"type": "boolean"
+							},
+							"odpv_ordemdepagamento": {
+								"type": "boolean"
+							},
+							"odpv_pagamento_fatura_indevida": {
+								"type": "boolean"
+							},
+							"odpv_tipo_ressarcimento": {
+								"type": "boolean"
+							},
+							"odpv_modelo_relatorio_padrao": {
+								"type": "boolean"
+							},
+							"_customerid_value": {
+								"type": "string"
+							},
+							"odpv_ha_exigencia_assinatura": {
+								"type": "boolean"
+							},
+							"odpv_filtro_cobranca": {
+								"type": "boolean"
+							},
+							"odpv_contrato_spg_empresarial": {
+								"type": "boolean"
+							},
+							"odpv_houve_inclusao_subestipulante": {
+								"type": "boolean"
+							},
+							"odpv_pular_etapa": {
+								"type": "boolean"
+							},
+							"odpv_material_marketing_custo": {
+								"type": "boolean"
+							},
+							"firstresponsesent": {
+								"type": "boolean"
+							},
+							"odpv_possui_dotnet_instalado": {
+								"type": "boolean"
+							},
+							"blockedprofile": {
+								"type": "boolean"
+							},
+							"odpv_criado_atraves_mashup": {
+								"type": "boolean"
+							},
+							"decremententitlementterm": {
+								"type": "boolean"
+							},
+							"statuscode": {
+								"type": "integer"
+							},
+							"incidentstagecode": {
+								"type": "integer"
+							},
+							"odpv_plano_equivalente_ao_contrato_atual": {
+								"type": "boolean"
+							},
+							"odpv_ocorrencia_compartilhada": {
+								"type": "boolean"
+							},
+							"ticketnumber": {
+								"type": "string"
+							},
+							"odpv_auto_number_protocolo": {
+								"type": "string"
+							},
+							"resolvebyslastatus": {
+								"type": "integer"
+							},
+							"merged": {
+								"type": "boolean"
+							},
+							"odpv_alteracao_inclusao_novo_plano": {
+								"type": "boolean"
+							},
+							"odpv_bloqueio_desbloqueio": {
+								"type": "boolean"
+							},
+							"odpv_gerar_base_ativo": {
+								"type": "boolean"
+							},
+							"odpv_para_todo_grupo": {
+								"type": "boolean"
+							},
+							"modifiedon": {
+								"type": "string"
+							},
+							"incidentid": {
+								"type": "string"
+							},
+							"checkemail": {
+								"type": "boolean"
+							},
+							"entityimageid": {
+								"type": "null"
+							},
+							"odpv_banco": {
+								"type": "null"
+							},
+							"odpv_data_inativacao_vida": {
+								"type": "null"
+							},
+							"odpv_operadora_concorrente": {
+								"type": "null"
+							},
+							"odpv_alteracao_prazo_contrato_para": {
+								"type": "null"
+							},
+							"odpv_nomedoresponsaveldaconta": {
+								"type": "null"
+							},
+							"odpv_tipo_do_manual": {
+								"type": "null"
+							},
+							"odpv_email_duplicado": {
+								"type": "null"
+							},
+							"odpv_responsavel_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_motivo_boas_vindas": {
+								"type": "null"
+							},
+							"odpv_motivo_da_remocao_da_especialidade": {
+								"type": "null"
+							},
+							"odpv_tipo_obrigacao": {
+								"type": "null"
+							},
+							"odpv_numero_plano": {
+								"type": "null"
+							},
+							"odpv_motivo_troca": {
+								"type": "null"
+							},
+							"responseby": {
+								"type": "null"
+							},
+							"_contractid_value": {
+								"type": "null"
+							},
+							"odpv_data_recibo": {
+								"type": "null"
+							},
+							"odpv_data_fim_extrato": {
+								"type": "null"
+							},
+							"odpv_competencia": {
+								"type": "null"
+							},
+							"entityimage_url": {
+								"type": "null"
+							},
+							"odpv_qtde_impressao": {
+								"type": "null"
+							},
+							"odpv_numero_ficha_tratamento_manutencao": {
+								"type": "null"
+							},
+							"emailaddress": {
+								"type": "null"
+							},
+							"_odpv_assuntoid_value": {
+								"type": "null"
+							},
+							"odpv_conta_contabil": {
+								"type": "null"
+							},
+							"odpv_logradouro_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_valor_base": {
+								"type": "null"
+							},
+							"odpv_uo_cd": {
+								"type": "null"
+							},
+							"odpv_canal_venda": {
+								"type": "null"
+							},
+							"_contactid_value": {
+								"type": "null"
+							},
+							"odpv_cod_proposta_paga": {
+								"type": "null"
+							},
+							"odpv_publico_do_cancelamento": {
+								"type": "null"
+							},
+							"odpv_motivo_do_parecer": {
+								"type": "null"
+							},
+							"odpv_data_continuidade_tratamento": {
+								"type": "null"
+							},
+							"odpv_num_oc_autorizacao__repasse": {
+								"type": "null"
+							},
+							"odpv_numero_beneficiario": {
+								"type": "null"
+							},
+							"odpv_periodo_filtro": {
+								"type": "null"
+							},
+							"odpv_data_do_erro": {
+								"type": "null"
+							},
+							"odpv_tipo_solicitacao": {
+								"type": "null"
+							},
+							"odpv_fatura_vencimento": {
+								"type": "null"
+							},
+							"odpv_beneficiario_nao_cadastrado": {
+								"type": "null"
+							},
+							"odpv_meio_contato_preferencial": {
+								"type": "null"
+							},
+							"odpv_data_hora_consulta": {
+								"type": "null"
+							},
+							"odpv_motivo_inativacao": {
+								"type": "null"
+							},
+							"odpv_cpf": {
+								"type": "null"
+							},
+							"odpv_razao_social": {
+								"type": "null"
+							},
+							"odpv_especialidade_etapa_gto": {
+								"type": "null"
+							},
+							"odpv_motivo_cancelamento_contrato": {
+								"type": "null"
+							},
+							"_odpv_area_proprietaria_value": {
+								"type": "null"
+							},
+							"nextsla": {
+								"type": "null"
+							},
+							"_msa_partnercontactid_value": {
+								"type": "null"
+							},
+							"odpv_resumo_decisao": {
+								"type": "null"
+							},
+							"entityimage_timestamp": {
+								"type": "null"
+							},
+							"odpv_especialidades": {
+								"type": "null"
+							},
+							"odpv_conta": {
+								"type": "null"
+							},
+							"_odpv_contato_empresaid_value": {
+								"type": "null"
+							},
+							"odpv_data_negativa_atendimento": {
+								"type": "null"
+							},
+							"odpv_motivo_solicitacao_rx": {
+								"type": "null"
+							},
+							"_odpv_carterinha_dependenteid_value": {
+								"type": "null"
+							},
+							"odpv_tipo_de_irregularidade": {
+								"type": "null"
+							},
+							"odpv_movimentacao_data": {
+								"type": "null"
+							},
+							"_resolvebykpiid_value": {
+								"type": "null"
+							},
+							"odpv_nomecompleto": {
+								"type": "null"
+							},
+							"odpv_data_exclusao_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_tratamento_analisado": {
+								"type": "null"
+							},
+							"odpv_qtde_vidas": {
+								"type": "null"
+							},
+							"odpv_tipo_deliberacao": {
+								"type": "null"
+							},
+							"odpv_contrato_pme_empresarial": {
+								"type": "null"
+							},
+							"adx_modifiedbyipaddress": {
+								"type": "null"
+							},
+							"odpv_especialidade_evento_negado": {
+								"type": "null"
+							},
+							"odpv_codido_credenciado": {
+								"type": "null"
+							},
+							"_msa_partnerid_value": {
+								"type": "null"
+							},
+							"odpv_descricao_da_irregularidade": {
+								"type": "null"
+							},
+							"odpv_ocorrencia_procedente": {
+								"type": "null"
+							},
+							"odpv_clausula_contratual": {
+								"type": "null"
+							},
+							"odpv_codigo_empresa": {
+								"type": "null"
+							},
+							"odpv_arquivo_referente": {
+								"type": "null"
+							},
+							"odpv_telefone_origem": {
+								"type": "null"
+							},
+							"odpv_nome_plano": {
+								"type": "null"
+							},
+							"odpv_numero_protocolo_ocorrencia": {
+								"type": "null"
+							},
+							"_odpv_empresaid_value": {
+								"type": "null"
+							},
+							"odpv_codigo_cd": {
+								"type": "null"
+							},
+							"odpv_dentes_deciduos": {
+								"type": "null"
+							},
+							"contractservicelevelcode": {
+								"type": "null"
+							},
+							"odpv_nome_fantasia_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_tratamento": {
+								"type": "null"
+							},
+							"odpv_alteracao_dados_pessoais": {
+								"type": "null"
+							},
+							"odpv_de_para_plano": {
+								"type": "null"
+							},
+							"odpv_regional": {
+								"type": "null"
+							},
+							"odpv_login_empresa_distribuidora": {
+								"type": "null"
+							},
+							"odpv_data_inativacao": {
+								"type": "null"
+							},
+							"_accountid_value": {
+								"type": "null"
+							},
+							"_firstresponsebykpiid_value": {
+								"type": "null"
+							},
+							"odpv_estado_endereco_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_tipo_minuta_bradesco": {
+								"type": "null"
+							},
+							"odpv_vigencia_antes_depois": {
+								"type": "null"
+							},
+							"odpv_motivo_exclusao": {
+								"type": "null"
+							},
+							"odpv_competencia_parcela": {
+								"type": "null"
+							},
+							"odpv_competencia_ocorrencia": {
+								"type": "null"
+							},
+							"adx_stepstoreproduce": {
+								"type": "null"
+							},
+							"odpv_data_credenciamento": {
+								"type": "null"
+							},
+							"odpv_ano_base": {
+								"type": "null"
+							},
+							"odpv_numero_ficha": {
+								"type": "null"
+							},
+							"odpv_numero_do_objeto": {
+								"type": "null"
+							},
+							"odpv_marca_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_telefone_informado": {
+								"type": "null"
+							},
+							"odpv_motivo_da_devolucao": {
+								"type": "null"
+							},
+							"odpv_tipo_de_acao": {
+								"type": "null"
+							},
+							"odpv_periodo_estrategico": {
+								"type": "null"
+							},
+							"odpv_telefone_contato": {
+								"type": "null"
+							},
+							"odpv_telefone_pop_up": {
+								"type": "null"
+							},
+							"odpv_protocolo_do_atendimento": {
+								"type": "null"
+							},
+							"odpv_devolvido_valor": {
+								"type": "null"
+							},
+							"_odpv_credenciado_potencialid_value": {
+								"type": "null"
+							},
+							"odpv_data_geral_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_motivo_suspensao_atendimento": {
+								"type": "null"
+							},
+							"odpv_motivo_do_desconto": {
+								"type": "null"
+							},
+							"odpv_emissao_fatura_competencia": {
+								"type": "null"
+							},
+							"odpv_data_fim_subfatura": {
+								"type": "null"
+							},
+							"odpv_evento_valorizado_repassado_gto": {
+								"type": "null"
+							},
+							"odpv_telefone_contato_sem_mascara": {
+								"type": "null"
+							},
+							"_createdbyexternalparty_value": {
+								"type": "null"
+							},
+							"odpv_cidade_mais_proxima": {
+								"type": "null"
+							},
+							"odpv_necessidade_especifica": {
+								"type": "null"
+							},
+							"odpv_mes_competencia_fatura": {
+								"type": "null"
+							},
+							"odpv_data_envio": {
+								"type": "null"
+							},
+							"odpv_qtd_dias_solicitacao_preaprovacao": {
+								"type": "null"
+							},
+							"odpv_nome_formulario": {
+								"type": "null"
+							},
+							"_odpv_motivoid_value": {
+								"type": "null"
+							},
+							"odpv_codigo_devolucao_mesmo_cnpj": {
+								"type": "null"
+							},
+							"traversedpath": {
+								"type": "null"
+							},
+							"_odpv_representanteid_value": {
+								"type": "null"
+							},
+							"odpv_ultima_fatura_a_ser_emitida": {
+								"type": "null"
+							},
+							"odpv_data_alterada": {
+								"type": "null"
+							},
+							"odpv_cidade_endereco_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_dentista_realizou_procedimento": {
+								"type": "null"
+							},
+							"odpv_procedimento_realizado": {
+								"type": "null"
+							},
+							"odpv_prazo_denuncia": {
+								"type": "null"
+							},
+							"odpv_vigencia_data": {
+								"type": "null"
+							},
+							"odpv_motivo_proposta": {
+								"type": "null"
+							},
+							"entityimage": {
+								"type": "null"
+							},
+							"odpv_motivo": {
+								"type": "null"
+							},
+							"odpv_data_vencimento_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_gto_codigo_tuss": {
+								"type": "null"
+							},
+							"_existingcase_value": {
+								"type": "null"
+							},
+							"odpv_publico_dental": {
+								"type": "null"
+							},
+							"_contractdetailid_value": {
+								"type": "null"
+							},
+							"_odpv_codigo_carteirinha_atual_value": {
+								"type": "null"
+							},
+							"odpv_motivo_data_fim": {
+								"type": "null"
+							},
+							"_odpv_codigo_dentista_atual_value": {
+								"type": "null"
+							},
+							"odpv_tipo_alteracao_cadastral": {
+								"type": "null"
+							},
+							"odpv_motivo_reativacao_vidas": {
+								"type": "null"
+							},
+							"odpv_contato_responsavel_pedido_txt": {
+								"type": "null"
+							},
+							"odpv_nova_data_pagamento_fatura": {
+								"type": "null"
+							},
+							"odpv_tipo_do_pedido": {
+								"type": "null"
+							},
+							"odpv_data_emissao": {
+								"type": "null"
+							},
+							"odpv_data_prevista_acao": {
+								"type": "null"
+							},
+							"odpv_motivo_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_motivo_disque": {
+								"type": "null"
+							},
+							"odpv_motivo_ficha_financeira": {
+								"type": "null"
+							},
+							"odpv_tipos_solicitacao": {
+								"type": "null"
+							},
+							"odpv_codigo_tuss_e_dente_regiao": {
+								"type": "null"
+							},
+							"odpv_descricao_tratamento": {
+								"type": "null"
+							},
+							"odpv_nome_das_vidas": {
+								"type": "null"
+							},
+							"_odpv_corretoraid_value": {
+								"type": "null"
+							},
+							"odpv_navegador_utilizado": {
+								"type": "null"
+							},
+							"odpv_numero_apolice": {
+								"type": "null"
+							},
+							"odpv_informar_a_especialidade": {
+								"type": "null"
+							},
+							"odpv_recredenciamento": {
+								"type": "null"
+							},
+							"odpv_numero_do_banco": {
+								"type": "null"
+							},
+							"odpv_vigencia_atual": {
+								"type": "null"
+							},
+							"odpv_pedido_motivo": {
+								"type": "null"
+							},
+							"odpv_numero_da_proposta": {
+								"type": "null"
+							},
+							"odpv_motivo_urgencia": {
+								"type": "null"
+							},
+							"odpv_cadastro_de_especialidade": {
+								"type": "null"
+							},
+							"_odpv_ocorrencia_sac_value": {
+								"type": "null"
+							},
+							"odpv_motivo_retirada_de_carencia": {
+								"type": "null"
+							},
+							"odpv_nome_da_universidade": {
+								"type": "null"
+							},
+							"odpv_tipo_cadastro": {
+								"type": "null"
+							},
+							"odpv_telefone_dentista": {
+								"type": "null"
+							},
+							"odpv_codigo_transferencia": {
+								"type": "null"
+							},
+							"_entitlementid_value": {
+								"type": "null"
+							},
+							"odpv_forma_pagamento": {
+								"type": "null"
+							},
+							"odpv_instrucao_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_especialidade_intencao_cobranca": {
+								"type": "null"
+							},
+							"odpv_motivo_pagamento_comissao": {
+								"type": "null"
+							},
+							"productserialnumber": {
+								"type": "null"
+							},
+							"odpv_bairro_endereco_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_bairro_rede": {
+								"type": "null"
+							},
+							"lastinteraction": {
+								"type": "null"
+							},
+							"odpv_data_da_formatura": {
+								"type": "null"
+							},
+							"odpv_tipo_da_alteracao": {
+								"type": "null"
+							},
+							"odpv_motivo_reativacao": {
+								"type": "null"
+							},
+							"odpv_numero_do_certificado": {
+								"type": "null"
+							},
+							"odpv_valor_recibo": {
+								"type": "null"
+							},
+							"odpv_vigencia_data_fim_plano": {
+								"type": "null"
+							},
+							"odpv_login_duplicado": {
+								"type": "null"
+							},
+							"odpv_numero_das_carteirinhas": {
+								"type": "null"
+							},
+							"odpv_novo_vencimento": {
+								"type": "null"
+							},
+							"exchangerate": {
+								"type": "null"
+							},
+							"odpv_data_solicitacao": {
+								"type": "null"
+							},
+							"odpv_nome_do_beneficiario": {
+								"type": "null"
+							},
+							"odpv_banco_disque": {
+								"type": "null"
+							},
+							"odpv_uo_nova": {
+								"type": "null"
+							},
+							"odpv_numero_endereco_ocorrencia": {
+								"type": "null"
+							},
+							"_odpv_ocorrencia_criticaid_value": {
+								"type": "null"
+							},
+							"odpv_tipo_informe_rendimento": {
+								"type": "null"
+							},
+							"odpv_identificacao_empresa_origem": {
+								"type": "null"
+							},
+							"odpv_prorrogacaodetratamentoortodontico": {
+								"type": "null"
+							},
+							"odpv_dados_completos_destinatario": {
+								"type": "null"
+							},
+							"adx_resolutiondate": {
+								"type": "null"
+							},
+							"odpv_tipo_minuta": {
+								"type": "null"
+							},
+							"odpv_nome_fantasia_de_para": {
+								"type": "null"
+							},
+							"odpv_tipo_processo": {
+								"type": "null"
+							},
+							"_odpv_representante_dentistaid_value": {
+								"type": "null"
+							},
+							"odpv_inicio_parametro": {
+								"type": "null"
+							},
+							"odpv_codigo_a_transferir": {
+								"type": "null"
+							},
+							"sentimentvalue": {
+								"type": "null"
+							},
+							"odpv_motivo_abertura": {
+								"type": "null"
+							},
+							"odpv_data_da_movimentacao": {
+								"type": "null"
+							},
+							"odpv_cancelamento_motivo": {
+								"type": "null"
+							},
+							"stageid": {
+								"type": "null"
+							},
+							"_odpv_beneficiario_value": {
+								"type": "null"
+							},
+							"odpv_cnpj_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_endereco_completo_empresa_responsavel": {
+								"type": "null"
+							},
+							"odpv_carteirinha_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_fim_parametro": {
+								"type": "null"
+							},
+							"odpv_plano_equivalente_contrato_atual": {
+								"type": "null"
+							},
+							"odpv_percentual_comissao_novo": {
+								"type": "null"
+							},
+							"odpv_vigencia_transferencia": {
+								"type": "null"
+							},
+							"odpv_valor_juros_a_isentar": {
+								"type": "null"
+							},
+							"odpv_numero_processo": {
+								"type": "null"
+							},
+							"odpv_identificacao_empresa_destino": {
+								"type": "null"
+							},
+							"odpv_materiais_qual_marca": {
+								"type": "null"
+							},
+							"odpv_qual_material": {
+								"type": "null"
+							},
+							"odpv_periodo": {
+								"type": "null"
+							},
+							"odpv_telefone_originador": {
+								"type": "null"
+							},
+							"odpv_fatura_a_ser_cancelada": {
+								"type": "null"
+							},
+							"_odpv_pedido_value": {
+								"type": "null"
+							},
+							"odpv_numero_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_unidade": {
+								"type": "null"
+							},
+							"odpv_email_contato": {
+								"type": "null"
+							},
+							"odpv_contrato_subfatura_origem": {
+								"type": "null"
+							},
+							"_odpv_codigo_dentista_novo_value": {
+								"type": "null"
+							},
+							"odpv_motivo_devolucao_valor_pago": {
+								"type": "null"
+							},
+							"adx_resolution": {
+								"type": "null"
+							},
+							"odpv_email_responsavel_movimentacoes": {
+								"type": "null"
+							},
+							"odpv_motivo_acoes_rede": {
+								"type": "null"
+							},
+							"odpv_tipo_tratamento_especialidade_necessario": {
+								"type": "null"
+							},
+							"odpv_tipo_processo_juridico": {
+								"type": "null"
+							},
+							"odpv_havera_cancelamento_fatura": {
+								"type": "null"
+							},
+							"adx_createdbyipaddress": {
+								"type": "null"
+							},
+							"odpv_email_secundario": {
+								"type": "null"
+							},
+							"odpv_tipo_acao_bradesco": {
+								"type": "null"
+							},
+							"_subjectid_value": {
+								"type": "null"
+							},
+							"odpv_digito_agencia": {
+								"type": "null"
+							},
+							"odpv_nome_empresa": {
+								"type": "null"
+							},
+							"odpv_motivo_do_registro": {
+								"type": "null"
+							},
+							"odpv_tributos": {
+								"type": "null"
+							},
+							"odpv_marca_dropdown": {
+								"type": "null"
+							},
+							"odpv_cobranca_ou_devolucao_competencia": {
+								"type": "null"
+							},
+							"odpv_cpd_corretora": {
+								"type": "null"
+							},
+							"utcconversiontimezonecode": {
+								"type": "null"
+							},
+							"odpv_justificativa_do_cd_troca": {
+								"type": "null"
+							},
+							"odpv_data_fim_plano": {
+								"type": "null"
+							},
+							"odpv_numero_proposta": {
+								"type": "null"
+							},
+							"odpv_nome_cd": {
+								"type": "null"
+							},
+							"timezoneruleversionnumber": {
+								"type": "null"
+							},
+							"odpv_outros": {
+								"type": "null"
+							},
+							"odpv_emitir_segunda_via_carteirinha": {
+								"type": "null"
+							},
+							"odpv_nome_fantasia": {
+								"type": "null"
+							},
+							"followupby": {
+								"type": "null"
+							},
+							"odpv_endereco_completo": {
+								"type": "null"
+							},
+							"odpv_origem_archive": {
+								"type": "null"
+							},
+							"odpv_data_inicio_tratamento": {
+								"type": "null"
+							},
+							"odpv_data_recepcao": {
+								"type": "null"
+							},
+							"customersatisfactioncode": {
+								"type": "null"
+							},
+							"odpv_numero_formulario_reembolso": {
+								"type": "null"
+							},
+							"odpv_numero_agencia_bradesco": {
+								"type": "null"
+							},
+							"odpv_grupo_gerencial": {
+								"type": "null"
+							},
+							"deactivatedon": {
+								"type": "null"
+							},
+							"odpv_qtde_de_blocos": {
+								"type": "null"
+							},
+							"odpv_codigos_remocao_especialidades": {
+								"type": "null"
+							},
+							"odpv_especificar_documento_aditivo": {
+								"type": "null"
+							},
+							"odpv_motivo_estorno": {
+								"type": "null"
+							},
+							"odpv_vigencia_contrato": {
+								"type": "null"
+							},
+							"odpv_competencia_fatura": {
+								"type": "null"
+							},
+							"odpv_tratamento_nao_reconhecido": {
+								"type": "null"
+							},
+							"_odpv_motor_regraid_value": {
+								"type": "null"
+							},
+							"description": {
+								"type": "null"
+							},
+							"odpv_cep_endereco_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_motivo_negociacao": {
+								"type": "null"
+							},
+							"odpv_numero_ocorrencia_descredenciamento": {
+								"type": "null"
+							},
+							"odpv_email_responsavel_recebimento_link_fatura": {
+								"type": "null"
+							},
+							"odpv_motivo_solicitacao": {
+								"type": "null"
+							},
+							"_odpv_parceiroid_value": {
+								"type": "null"
+							},
+							"odpv_meio_de_envio": {
+								"type": "null"
+							},
+							"odpv_descreva_motivo_citado": {
+								"type": "null"
+							},
+							"lastonholdtime": {
+								"type": "null"
+							},
+							"odpv_motivo_de_cancelamento": {
+								"type": "null"
+							},
+							"odpv_data_bloqueio": {
+								"type": "null"
+							},
+							"odpv_tipo_de_envio": {
+								"type": "null"
+							},
+							"odpv_quantidade_pontos": {
+								"type": "null"
+							},
+							"odpv_criacao_usuarios": {
+								"type": "null"
+							},
+							"odpv_valor_plano": {
+								"type": "null"
+							},
+							"odpv_acao_inclusao_exclusao": {
+								"type": "null"
+							},
+							"odpv_especialidade_a_ser_removida": {
+								"type": "null"
+							},
+							"odpv_tipo_da_acao": {
+								"type": "null"
+							},
+							"_owningteam_value": {
+								"type": "null"
+							},
+							"overriddencreatedon": {
+								"type": "null"
+							},
+							"odpv_argumento_usado_pelo_dentista": {
+								"type": "null"
+							},
+							"adx_createdbyusername": {
+								"type": "null"
+							},
+							"odpv_como_foi_enviado": {
+								"type": "null"
+							},
+							"odpv_valor_ocorrencia_txt": {
+								"type": "null"
+							},
+							"odpv_data_deliberacao_descredenciamento": {
+								"type": "null"
+							},
+							"odpv_percentual_agenciamento": {
+								"type": "null"
+							},
+							"odpv_observacao_plano": {
+								"type": "null"
+							},
+							"odpv_data_nascimento": {
+								"type": "null"
+							},
+							"odpv_vigencia_reajuste": {
+								"type": "null"
+							},
+							"resolveby": {
+								"type": "null"
+							},
+							"odpv_preferencia_agendamento": {
+								"type": "null"
+							},
+							"odpv_classificacao_estrategica": {
+								"type": "null"
+							},
+							"odpv_fatura_pendente": {
+								"type": "null"
+							},
+							"odpv_fichas_senha_liberada": {
+								"type": "null"
+							},
+							"odpv_codigo": {
+								"type": "null"
+							},
+							"odpv_formas_segunda_via_contrato": {
+								"type": "null"
+							},
+							"odpv_tipos_de_tributos": {
+								"type": "null"
+							},
+							"odpv_protocolo_chatbot": {
+								"type": "null"
+							},
+							"_odpv_contratoid_value": {
+								"type": "null"
+							},
+							"odpv_acoes_realizadas_na_empresa": {
+								"type": "null"
+							},
+							"odpv_tera_estorno": {
+								"type": "null"
+							},
+							"odpv_oque_foienviado_equivocadamente": {
+								"type": "null"
+							},
+							"odpv_agencia": {
+								"type": "null"
+							},
+							"odpv_tipo_orientacao": {
+								"type": "null"
+							},
+							"_odpv_dentistaid_value": {
+								"type": "null"
+							},
+							"_kbarticleid_value": {
+								"type": "null"
+							},
+							"odpv_endereco_envio_completo": {
+								"type": "null"
+							},
+							"odpv_tipo_de_credenciado": {
+								"type": "null"
+							},
+							"odpv_meio_envio_bradesco": {
+								"type": "null"
+							},
+							"odpv_tipo_minuta_demandas_juridicas": {
+								"type": "null"
+							},
+							"messagetypecode": {
+								"type": "null"
+							},
+							"odpv_marca_atual_contrato": {
+								"type": "null"
+							},
+							"cr0ee_teste_20201612": {
+								"type": "null"
+							},
+							"casetypecode": {
+								"type": "null"
+							},
+							"onholdtime": {
+								"type": "null"
+							},
+							"odpv_tipo_material": {
+								"type": "null"
+							},
+							"odpv_competencias_aberto": {
+								"type": "null"
+							},
+							"odpv_renovacao_contrato": {
+								"type": "null"
+							},
+							"actualserviceunits": {
+								"type": "null"
+							},
+							"escalatedon": {
+								"type": "null"
+							},
+							"odpv_cod_nova_proposta": {
+								"type": "null"
+							},
+							"odpv_dia_retorno_do_contato": {
+								"type": "null"
+							},
+							"odpv_alteracao_cadastral_item": {
+								"type": "null"
+							},
+							"odpv_ocorrencia_anterior": {
+								"type": "null"
+							},
+							"odpv_numero_formulario_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_novo_cnpj": {
+								"type": "null"
+							},
+							"odpv_alteracao_indice_utilizado": {
+								"type": "null"
+							},
+							"odpv_problema_tecnico": {
+								"type": "null"
+							},
+							"billedserviceunits": {
+								"type": "null"
+							},
+							"odpv_tipo_verificacao": {
+								"type": "null"
+							},
+							"odpv_motivo_retirada_carencia": {
+								"type": "null"
+							},
+							"odpv_motivo_comunicado": {
+								"type": "null"
+							},
+							"odpv_celula": {
+								"type": "null"
+							},
+							"odpv_rede_nova": {
+								"type": "null"
+							},
+							"odpv_nome_responsavel_contrato": {
+								"type": "null"
+							},
+							"odpv_ano_reajuste": {
+								"type": "null"
+							},
+							"odpv_endereco_portal": {
+								"type": "null"
+							},
+							"odpv_numeros_das_gtos": {
+								"type": "null"
+							},
+							"odpv_motivo_glosa_protese": {
+								"type": "null"
+							},
+							"adx_modifiedbyusername": {
+								"type": "null"
+							},
+							"odpv_nova_operadora": {
+								"type": "null"
+							},
+							"odpv_nome_do_responsavel": {
+								"type": "null"
+							},
+							"odpv_data_cancelamento_contrato": {
+								"type": "null"
+							},
+							"odpv_tipo_alteracao_cadastral_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_data_primeira_liberacao_senha": {
+								"type": "null"
+							},
+							"odpv_tipo_conta": {
+								"type": "null"
+							},
+							"odpv_sigla_plano": {
+								"type": "null"
+							},
+							"odpv_cobranca_multa": {
+								"type": "null"
+							},
+							"odpv_estorno_via": {
+								"type": "null"
+							},
+							"_modifiedonbehalfby_value": {
+								"type": "null"
+							},
+							"odpv_dentes_permanentes": {
+								"type": "null"
+							},
+							"_odpv_dentista_alvo_solicitacaoid_value": {
+								"type": "null"
+							},
+							"odpv_motivo_da_autorizacao": {
+								"type": "null"
+							},
+							"_productid_value": {
+								"type": "null"
+							},
+							"_primarycontactid_value": {
+								"type": "null"
+							},
+							"odpv_tipo_relatorio_book_comite": {
+								"type": "null"
+							},
+							"odpv_evento": {
+								"type": "null"
+							},
+							"odpv_valor": {
+								"type": "null"
+							},
+							"odpv_tipodeacao": {
+								"type": "null"
+							},
+							"odpv_vigencia_reativacao_contrato": {
+								"type": "null"
+							},
+							"odpv_uo_atual": {
+								"type": "null"
+							},
+							"odpv_motivo_estorno_protocolo": {
+								"type": "null"
+							},
+							"odpv_motivo_cancelamento_plano": {
+								"type": "null"
+							},
+							"odpv_plano_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_prazo_renovacao": {
+								"type": "null"
+							},
+							"odpv_vigencia_data_fim_empresa": {
+								"type": "null"
+							},
+							"odpv_valor_a_ser_devolvido": {
+								"type": "null"
+							},
+							"odpv_renovado_ate": {
+								"type": "null"
+							},
+							"odpv_telefone_de_contato": {
+								"type": "null"
+							},
+							"odpv_protocolo_origem": {
+								"type": "null"
+							},
+							"odpv_email_corretor": {
+								"type": "null"
+							},
+							"_masterid_value": {
+								"type": "null"
+							},
+							"odpv_tipo_procedimento": {
+								"type": "null"
+							},
+							"_msdyn_iotalert_value": {
+								"type": "null"
+							},
+							"odpv_nome_cro_solicitante": {
+								"type": "null"
+							},
+							"odpv_data_visita": {
+								"type": "null"
+							},
+							"_odpv_formulario_automatico_value": {
+								"type": "null"
+							},
+							"odpv_nome_dentista": {
+								"type": "null"
+							},
+							"odpv_motivo_bloqueio": {
+								"type": "null"
+							},
+							"odpv_centro_de_custo": {
+								"type": "null"
+							},
+							"odpv_motivo_ativacao": {
+								"type": "null"
+							},
+							"odpv_direcionamento_material": {
+								"type": "null"
+							},
+							"odpv_data_primeiro_repasse": {
+								"type": "null"
+							},
+							"_parentcaseid_value": {
+								"type": "null"
+							},
+							"odpv_motivo_descredenciamento": {
+								"type": "null"
+							},
+							"odpv_complemento_endereco_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_valor_fatura": {
+								"type": "null"
+							},
+							"odpv_alterar_plano": {
+								"type": "null"
+							},
+							"_socialprofileid_value": {
+								"type": "null"
+							},
+							"odpv_vigencia_da_reativacao": {
+								"type": "null"
+							},
+							"odpv_vigencia_incexc_realizada": {
+								"type": "null"
+							},
+							"odpv_informar_irregularidade_demanda": {
+								"type": "null"
+							},
+							"odpv_classificacao_procedimento": {
+								"type": "null"
+							},
+							"odpv_nome_credenciado": {
+								"type": "null"
+							},
+							"odpv_nome_acao": {
+								"type": "null"
+							},
+							"odpv_auto_number": {
+								"type": "null"
+							},
+							"odpv_rede_atual": {
+								"type": "null"
+							},
+							"odpv_login_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_tipo_movimentacao": {
+								"type": "null"
+							},
+							"odpv_n_da_ocorrencia_de_negociacao": {
+								"type": "null"
+							},
+							"odpv_motivo_orientacao": {
+								"type": "null"
+							},
+							"odpv_data_atendimento": {
+								"type": "null"
+							},
+							"odpv_digito_conta": {
+								"type": "null"
+							},
+							"odpv_tipo_dente": {
+								"type": "null"
+							},
+							"odpv_data_debito": {
+								"type": "null"
+							},
+							"odpv_qtde_minutas": {
+								"type": "null"
+							},
+							"odpv_data_vigencia": {
+								"type": "null"
+							},
+							"odpv_novos_planos": {
+								"type": "null"
+							},
+							"odpv_corretora_a_ser_nomeada": {
+								"type": "null"
+							},
+							"odpv_data_tratamento": {
+								"type": "null"
+							},
+							"_odpv_aplicativo_do_credenciado_value": {
+								"type": "null"
+							},
+							"odpv_tipo_de_liberacao": {
+								"type": "null"
+							},
+							"_odpv_carteirinhaid_value": {
+								"type": "null"
+							},
+							"odpv_tipo_de_relatorio": {
+								"type": "null"
+							},
+							"odpv_solicitadopor": {
+								"type": "null"
+							},
+							"odpv_manutencoessemfichainicioautorizada": {
+								"type": "null"
+							},
+							"odpv_tipo_demanda": {
+								"type": "null"
+							},
+							"odpv_situacao_caixa": {
+								"type": "null"
+							},
+							"odpv_percentual_comissao_antigo": {
+								"type": "null"
+							},
+							"odpv_exemplos_guias_irregularidades": {
+								"type": "null"
+							},
+							"odpv_subfatura_origem": {
+								"type": "null"
+							},
+							"odpv_email_de_contato": {
+								"type": "null"
+							},
+							"importsequencenumber": {
+								"type": "null"
+							},
+							"odpv_data_inicio_extrato": {
+								"type": "null"
+							},
+							"odpv_alteracao_prazo_contrato_de": {
+								"type": "null"
+							},
+							"odpv_horario_atendimento": {
+								"type": "null"
+							},
+							"odpv_email_para_envio_do_documento": {
+								"type": "null"
+							},
+							"odpv_data_alteracao_evento_uo": {
+								"type": "null"
+							},
+							"_transactioncurrencyid_value": {
+								"type": "null"
+							},
+							"influencescore": {
+								"type": "null"
+							},
+							"odpv_sinistralidade": {
+								"type": "null"
+							},
+							"odpv_responsavel_duplicado": {
+								"type": "null"
+							},
+							"odpv_informacoes_credenciado": {
+								"type": "null"
+							},
+							"odpv_percentual_desconto": {
+								"type": "null"
+							},
+							"_createdonbehalfby_value": {
+								"type": "null"
+							},
+							"odpv_tipo_de_emissao": {
+								"type": "null"
+							},
+							"odpv_motivo_cancelamento": {
+								"type": "null"
+							},
+							"odpv_nome_atendente": {
+								"type": "null"
+							},
+							"odpv_motivo_prorrogacao_2via": {
+								"type": "null"
+							},
+							"odpv_contrato": {
+								"type": "null"
+							},
+							"odpv_subfatura": {
+								"type": "null"
+							},
+							"_modifiedbyexternalparty_value": {
+								"type": "null"
+							},
+							"odpv_numero_fatura_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_novo_vegencia": {
+								"type": "null"
+							},
+							"odpv_acao_retroativa_referente": {
+								"type": "null"
+							},
+							"odpv_motivodaglosa": {
+								"type": "null"
+							},
+							"odpv_alteracao_cadastral_ocorrencia": {
+								"type": "null"
+							},
+							"odpv_subfatura_destino": {
+								"type": "null"
+							},
+							"odpv_alteracao_para_marca": {
+								"type": "null"
+							},
+							"odpv_email_credenciado": {
+								"type": "null"
+							},
+							"odpv_resumo_obrigacao": {
+								"type": "null"
+							},
+							"odpv_tipo_acao_desejada": {
+								"type": "null"
+							},
+							"odpv_periodo_tratamento": {
+								"type": "null"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
